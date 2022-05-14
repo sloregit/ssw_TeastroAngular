@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-
+import {TeatroDBService} from ''
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
