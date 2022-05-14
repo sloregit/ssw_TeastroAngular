@@ -6,8 +6,8 @@ import { TeatroDBService } from './teatro-db.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  name = 1;
+  prenotazioni;
   constructor(private http: TeatroDBService) {
-    this.http.getPrenotazioni$().subscribe((val) => console.log(val));
+    this.http.getPrenotazioni$().subscribe((val) => (this.prenotazioni = val));
   }
 }
