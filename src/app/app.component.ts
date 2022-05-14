@@ -6,5 +6,5 @@ import { TeatroDBService } from './teatro-db.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  name = 'Angular ' + VERSION.major;
+  name = TeatroDBService.getPrenotazioni$.subscribe;
 }
