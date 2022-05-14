@@ -10,5 +10,6 @@ import { TeatroDBService } from './teatro-db.service';
   imports: [BrowserModule, FormsModule, HttpClientModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
+  providers: [TeatroDBService],
 })
 export class AppModule {}
