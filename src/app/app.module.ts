@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TeatroDBService } from './teatro-db.service';
 import { LoginComponent } from './login/login.component';
-import { PulsanteComponent } from './pulsante/pulsante.component';
 import { TeatroComponent } from './teatro/teatro.component';
+import { PulsanteComponent } from './teatro/pulsante/pulsante.component';
+
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
   declarations: [
