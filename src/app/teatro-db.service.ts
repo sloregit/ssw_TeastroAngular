@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+//Esempio di come si prendono i dati da TeatroDBService
 @Injectable()
 export class TeatroDBService {
   Key: string = '0ef3f513';
