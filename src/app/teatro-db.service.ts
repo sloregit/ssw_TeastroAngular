@@ -12,7 +12,9 @@ export class TeatroDBService {
   public getPrenotazioni$(): Observable<string> {
     return this.http.get<string>(this.URL + 'get?key=' + this.Key);
   }
-  SetPrenotazioni$;
+  public SetPrenotazioni$(): Observable<string> {
+    return;
+  }
 }
 /**
   
