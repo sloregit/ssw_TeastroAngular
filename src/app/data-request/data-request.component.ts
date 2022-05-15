@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { TeatroDBService } from '../teatro-db.service';
-
 @Component({
-  selector: 'app-richiesta-dati',
-  templateUrl: './richiesta-dati.component.html',
-  styleUrls: ['./richiesta-dati.component.css'],
+  selector: 'app-data-request',
+  templateUrl: './data-request.component.html',
+  styleUrls: ['./data-request.component.css'],
 })
-export class RichiestaDatiComponent implements OnInit {
+export class DataRequestComponent implements OnInit {
   prenotazioni;
   constructor(private http: TeatroDBService) {
     this.http.getPrenotazioni$().subscribe((val) => (this.prenotazioni = val));
