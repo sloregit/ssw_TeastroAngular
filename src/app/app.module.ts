@@ -5,10 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TeatroDBService } from './teatro-db.service';
-import { DataRequestComponent } from './data-request/data-request.component';
+import { LoginComponent } from './login/login.component';
+import { PulsanteComponent } from './pulsante/pulsante.component';
+import { TeatroComponent } from './teatro/teatro.component';
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  declarations: [AppComponent, DataRequestComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    PulsanteComponent,
+    TeatroComponent,
+  ],
   bootstrap: [AppComponent],
   providers: [TeatroDBService],
 })
