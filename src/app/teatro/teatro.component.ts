@@ -10,8 +10,12 @@ export class TeatroComponent implements OnInit {
   a = new PulsanteComponent();
   prenotazioni;
   constructor(private TeatroDBservice: TeatroDBService) {
-    this.prenotazioni = TeatroDBservice.getPrenotazioni$();
+    this.prenotazioni = TeatroDBservice.getPrenotazioni$().subscribe;
+    console.log(this.prenotazioni);
   }
 
   ngOnInit() {}
 }
+
+///sottoscrizione ai dati fatta
+///creare array di pulsanti e mapparli coi dati
