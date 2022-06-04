@@ -6,7 +6,7 @@ import { PulsanteComponent } from './pulsante/pulsante.component';
   styleUrls: ['./teatro.component.css'],
 })
 export class TeatroComponent implements OnInit {
-  a = new PulsanteComponent;
+  a = new PulsanteComponent();
   constructor() {}
 
   ngOnInit() {}

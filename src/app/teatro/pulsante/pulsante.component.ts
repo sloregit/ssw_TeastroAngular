@@ -5,13 +5,10 @@ import { Component, Injectable, OnInit } from '@angular/core';
   templateUrl: './pulsante.component.html',
   styleUrls: ['./pulsante.component.css'],
 })
-
 export class PulsanteComponent implements OnInit {
   pulsante;
   etichetta: string;
   value: string;
-  aCapo: HTMLElement;
-  parent: HTMLElement = document.getElementById('pulsante');
   mostraNome() {
     try {
     } catch (e: any) {
