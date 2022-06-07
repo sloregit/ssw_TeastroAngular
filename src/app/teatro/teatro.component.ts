@@ -28,21 +28,21 @@ export class TeatroComponent implements OnInit {
         this.filePalco = this.prenotazioni.palco.length;
         this.postiPalco = this.prenotazioni.palco[0].length;
         this.platea = this.prenotazioni.platea.map((fila: Array<string>) =>
-          fila.map((val: string, posto: number) =>
-            //new Pulsante(val, this.postiPlatea, posto, 'platea')
-            console.log('platea: ' + val, posto)
+          fila.map(
+            (val: string, posto: number) =>
+              new PulsanteComponent(val, this.postiPlatea, posto, 'platea')
           )
         );
         this.palco = this.prenotazioni.palco.map((fila: Array<string>) =>
-          fila.map((val: string, posto: number) =>
-            //new Pulsante(val, this.postiPalco, posto, 'palco')
-            console.log('palco: ' + val, posto)
+          fila.map(
+            (val: string, posto: number) =>
+              new PulsanteComponent(val, this.postiPalco, posto, 'palco')
           )
         );
       },
     });
   }
-  ngOnInit;
+  ngOnInit() {}
 }
 
 ///sottoscrizione ai dati fatta
