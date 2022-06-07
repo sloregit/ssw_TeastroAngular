@@ -9,11 +9,12 @@ import { TeatroDBService } from '../teatro-db.service';
 export class TeatroComponent implements OnInit {
   a = new PulsanteComponent();
   prenotazioni;
-  constructor(private TeatroDBservice: TeatroDBService) {
-    this.prenotazioni = TeatroDBservice.getPrenotazioni$().subscribe;
-    console.log(this.prenotazioni);
+  constructor(private TeatroDBservice: TeatroDBService) {}
+  getTeatro() {
+    this.prenotazioni = this.TeatroDBservice.getPrenotazioni$().subscribe(
+      (val) => console.log(val)
+    );
   }
-
   ngOnInit() {}
 }
 
