@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PulsanteComponent } from '../pulsante/pulsante.component';
+//import { PulsanteComponent } from '../pulsante/pulsante.component';
+
 import { TeatroDBService } from '../teatro-db.service';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
