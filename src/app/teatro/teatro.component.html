@@ -1,7 +1,7 @@
 <button (click)="getTeatro()">Crea Teatro</button>
 <br />
 <input />
-<p #show (mostraNome)="show = $event">{{ show }}</p>
+<p #show>{{ show }}</p>
 <div>
   <div #platea id="platea_div" *ngFor="let prenotazioni of platea">
     <span *ngFor="let posto of prenotazioni; let i = index">
