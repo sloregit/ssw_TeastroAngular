@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PulsanteComponent } from './pulsante/pulsante.component';
 import { TeatroDBService } from '../teatro-db.service';
 import { Observable } from 'rxjs';
+import { of } from 'rxjs';
+
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
@@ -17,13 +19,16 @@ export class TeatroComponent implements OnInit {
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   constructor(private TeatroDBservice: TeatroDBService) {}
-
   getTeatro() {
     this.TeatroDBservice.getPrenotazioni$().subscribe({
       next: (res) => {
         //res è una stringa => trasformo in Json
         this.prenotazioni = JSON.parse(res);
-        console.log(this.prenotazioni);
+        this.platea = this.prenotazioni.platea;
+        this.palco = this.prenotazioni.palco;
+        console.log(typeof this.platea);
+        console.log(this.platea);
+        /*
         this.filePlatea = this.prenotazioni.platea.length;
         this.postiPlatea = this.prenotazioni.platea[0].length;
         this.filePalco = this.prenotazioni.palco.length;
@@ -32,9 +37,9 @@ export class TeatroComponent implements OnInit {
         this.platea = this.prenotazioni.platea.map((fila: Array<string>) =>
           fila.map(
             (val: string, posto: number) =>
-              new PulsanteComponent(/*val, this.postiPlatea, posto, 'platea'*/)
+              new PulsanteComponent(/*val, this.postiPlatea, posto, 'platea')
           )
-        ); /*
+        ); 
         this.palco = this.prenotazioni.palco.map((fila: Array<string>) =>
           fila.map(
             (val: string, posto: number) =>

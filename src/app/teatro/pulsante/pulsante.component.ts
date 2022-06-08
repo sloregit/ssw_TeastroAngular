@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pulsante',
@@ -7,7 +7,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 })
 export class PulsanteComponent implements OnInit {
   pulsante;
-  etichetta: Node;
+  @Input() etichetta: Node;
   value: string;
   aCapo: HTMLElement;
   nomi_par = document.getElementById('nomi_par');
@@ -32,12 +32,6 @@ export class PulsanteComponent implements OnInit {
   }
   constructor(/*nome: string, LFila: number, posto: number, zona: string*/) {
     try {
-      this.pulsante = document.createElement('button');
-      this.etichetta = document.createTextNode('');
-      this.etichetta.textContent = 'P'; //+ (posto + 1);
-      this.pulsante.appendChild(this.etichetta);
-      this.aCapo = document.createElement('br');
-      this.platea_div.appendChild(this.pulsante);
       // posto + 1 >= LFila ? this.platea_div.appendChild(this.aCapo) : '';
       /*
       if (zona === 'platea') {
@@ -50,7 +44,6 @@ export class PulsanteComponent implements OnInit {
       }*/
       // this.pulsante.value = nome != undefined ? nome : 'x';
       //this.pulsante.className = nome != 'x' ? 'prenotato' : 'libero';
-      this.pulsante.addEventListener('click', this.mostraNome);
     } catch (e: any) {
       console.error('errore in: Pulsante(constructor)', e.message, e.name);
     }

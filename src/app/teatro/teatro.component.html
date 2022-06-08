@@ -1,7 +1,11 @@
 <p>teatro works!</p>
 <button (click)="getTeatro()">Ottieni dati</button>
 <div>
-  <div #platea id="platea_div"></div>
+  <div #platea id="platea_div" *ngFor="let prenotazioni of platea">
+    <span *ngFor="let posto of prenotazioni; let i = index">
+      {{ i + 1 }}<app-pulsante></app-pulsante>
+    </span>
+  </div>
   <div #palco id="palco_div"></div>
 </div>
 <p #nomi_par id="nomi_par"></p>
