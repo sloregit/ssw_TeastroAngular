@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PulsanteComponent } from './pulsante/pulsante.component';
+import { PulsanteComponent } from '../pulsante/pulsante.component';
 import { TeatroDBService } from '../teatro-db.service';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
@@ -12,6 +12,7 @@ import { of } from 'rxjs';
 export class TeatroComponent implements OnInit {
   //a = new PulsanteComponent();
   prenotazioni;
+  nome;
   filePlatea: number;
   postiPlatea: number;
   filePalco: number;
@@ -26,28 +27,11 @@ export class TeatroComponent implements OnInit {
         this.prenotazioni = JSON.parse(res);
         this.platea = this.prenotazioni.platea;
         this.palco = this.prenotazioni.palco;
-        console.log(typeof this.platea);
-        console.log(this.platea);
-        /*
-        this.filePlatea = this.prenotazioni.platea.length;
-        this.postiPlatea = this.prenotazioni.platea[0].length;
-        this.filePalco = this.prenotazioni.palco.length;
-        this.postiPalco = this.prenotazioni.palco[0].length;
-
-        this.platea = this.prenotazioni.platea.map((fila: Array<string>) =>
-          fila.map(
-            (val: string, posto: number) =>
-              new PulsanteComponent(/*val, this.postiPlatea, posto, 'platea')
-          )
-        ); 
-        this.palco = this.prenotazioni.palco.map((fila: Array<string>) =>
-          fila.map(
-            (val: string, posto: number) =>
-              new PulsanteComponent(val, this.postiPalco, posto, 'palco')
-          )
-        );*/
       },
     });
+  }
+  mostraPrenotazione($event) {
+    this.nome = $event;
   }
   ngOnInit() {}
 }

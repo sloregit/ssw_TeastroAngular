@@ -1,17 +1,25 @@
 <button (click)="getTeatro()">Crea Teatro</button>
 <br />
 <input />
-<p #show>{{ show }}</p>
+<p #show>{{ nome }}</p>
 <div>
   <div #platea id="platea_div" *ngFor="let prenotazioni of platea">
     <span *ngFor="let posto of prenotazioni; let i = index">
-      <app-pulsante [nome]="posto" [etichetta]="'P' + i"></app-pulsante>
+      <app-pulsante
+        (mostraNome)="mostraPrenotazione($event)"
+        [nome]="posto"
+        [etichetta]="'P' + i"
+      ></app-pulsante>
     </span>
   </div>
   <br />
   <div #palco id="palco_div" *ngFor="let prenotazioni of palco">
     <span *ngFor="let posto of prenotazioni; let i = index">
-      <app-pulsante [etichetta]="'P' + i"></app-pulsante>
+      <app-pulsante
+        (mostraNome)="mostraPrenotazione($event)"
+        [nome]="posto"
+        [etichetta]="'P' + i"
+      ></app-pulsante>
     </span>
   </div>
 </div>

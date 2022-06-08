@@ -1,0 +1,9 @@
+<button
+  [ngStyle]="{
+    'background-color': nome != 'x' ? 'red' : 'turquoise'
+  }"
+  class="pulsante"
+  (click)="mostraNomeE()"
+>
+  {{ etichetta }}
+</button>
