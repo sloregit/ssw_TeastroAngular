@@ -1,4 +1,11 @@
-import { Component, Injectable, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  Injectable,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 @Component({
   selector: 'app-pulsante',
@@ -6,19 +13,18 @@ import { Component, Injectable, OnInit, Input } from '@angular/core';
   styleUrls: ['./pulsante.component.css'],
 })
 export class PulsanteComponent implements OnInit {
-  pulsante;
   @Input() etichetta: string;
-  value: string;
-  aCapo: HTMLElement;
+  @Input() nome: string;
+  selezionato: boolean;
   mostraNome() {
     try {
+      console.log(this.nome);
     } catch (e: any) {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);
     }
   }
   constructor() {
     try {
-      
     } catch (e: any) {
       console.error('errore in: Pulsante(constructor)', e.message, e.name);
     }

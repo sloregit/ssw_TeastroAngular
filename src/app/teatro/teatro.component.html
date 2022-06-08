@@ -1,8 +1,11 @@
 <button (click)="getTeatro()">Crea Teatro</button>
+<br />
+<input />
+<p>paragrafo</p>
 <div>
   <div #platea id="platea_div" *ngFor="let prenotazioni of platea">
     <span *ngFor="let posto of prenotazioni; let i = index">
-      <app-pulsante [etichetta]="'P' + i"></app-pulsante>
+      <app-pulsante [nome]="posto" [etichetta]="'P' + i"></app-pulsante>
     </span>
   </div>
   <br />
@@ -12,4 +15,3 @@
     </span>
   </div>
 </div>
-<p #nomi_par id="nomi_par"></p>
