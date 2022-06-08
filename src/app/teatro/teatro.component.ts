@@ -12,7 +12,7 @@ import { of } from 'rxjs';
 export class TeatroComponent implements OnInit {
   //a = new PulsanteComponent();
   prenotazioni;
-  nome;
+  nome: string;
   filePlatea: number;
   postiPlatea: number;
   filePalco: number;
