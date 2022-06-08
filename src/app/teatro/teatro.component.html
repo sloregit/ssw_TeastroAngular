@@ -3,7 +3,7 @@
 <div>
   <div #platea id="platea_div" *ngFor="let prenotazioni of platea">
     <span *ngFor="let posto of prenotazioni; let i = index">
-      {{ i + 1 }}<app-pulsante></app-pulsante>
+      <app-pulsante [etichetta]="'P' + i"></app-pulsante>
     </span>
   </div>
   <div #palco id="palco_div"></div>

@@ -7,7 +7,7 @@ import { Component, Injectable, OnInit, Input } from '@angular/core';
 })
 export class PulsanteComponent implements OnInit {
   pulsante;
-  @Input() etichetta: Node;
+  @Input() etichetta: string;
   value: string;
   aCapo: HTMLElement;
   nomi_par = document.getElementById('nomi_par');
