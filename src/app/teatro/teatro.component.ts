@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 //import { PulsanteComponent } from '../pulsante/pulsante.component';
 
 import { TeatroDBService } from '../teatro-db.service';
@@ -12,7 +12,7 @@ import { of } from 'rxjs';
 })
 export class TeatroComponent implements OnInit {
   //a = new PulsanteComponent();
-  prenotazioni;
+  @Input() prenotazioni;
   nome: string;
   filePlatea: number;
   postiPlatea: number;
@@ -20,16 +20,8 @@ export class TeatroComponent implements OnInit {
   postiPalco: number;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
-  constructor(private TeatroDBservice: TeatroDBService) {}
-  getTeatro() {
-    this.TeatroDBservice.getPrenotazioni$().subscribe({
-      next: (res) => {
-        //res è una stringa => trasformo in Json
-        this.prenotazioni = JSON.parse(res);
-        this.platea = this.prenotazioni.platea;
-        this.palco = this.prenotazioni.palco;
-      },
-    });
+  constructor(private TeatroDBservice: TeatroDBService) {
+    console.log(this.prenotazioni);
   }
   mostraPrenotazione($event) {
     this.nome = $event;

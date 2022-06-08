@@ -1,7 +1,12 @@
-<button (click)="getTeatro()">Crea Teatro</button>
+<br />
 <br />
 <app-inserimento></app-inserimento>
-<p #show>{{ nome }}</p>
+<p
+  #show
+  [ngStyle]="{ height: '20px', width: '50%', border: '0.5px dashed black' }"
+>
+  {{ nome }}
+</p>
 <div>
   <div #platea id="platea_div" *ngFor="let prenotazioni of platea">
     <span *ngFor="let posto of prenotazioni; let i = index">
