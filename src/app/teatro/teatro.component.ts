@@ -15,9 +15,9 @@ export interface Prenotazioni {
   templateUrl: './teatro.component.html',
   styleUrls: ['./teatro.component.css'],
 })
-export class TeatroComponent implements OnInit, Prenotazioni {
+export class TeatroComponent implements OnInit {
   //a = new PulsanteComponent();
-  @Input() prenotazioni: Prenotazioni;
+  @Input() prenotazioni;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   nome: string;
@@ -27,6 +27,7 @@ export class TeatroComponent implements OnInit, Prenotazioni {
   postiPalco: number;
   @Output() getTeatro = new EventEmitter<string>();
   constructor(private TeatroDBservice: TeatroDBService) {
+    this.prenotazioni.subscribe((val) => console.log(val));
     console.log('TC: ' + this.prenotazioni);
   }
   mostraPrenotazione($event) {
