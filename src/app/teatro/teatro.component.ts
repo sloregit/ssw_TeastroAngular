@@ -26,13 +26,13 @@ export class TeatroComponent implements OnInit, Prenotazioni {
   filePalco: number;
   postiPalco: number;
   @Output() getTeatro = new EventEmitter<string>();
-  constructor(private TeatroDBservice: TeatroDBService) {}
+  constructor(private TeatroDBservice: TeatroDBService) {
+    console.log(this.prenotazioni);
+  }
   mostraPrenotazione($event) {
     this.nome = $event;
   }
-  ngOnInit() {
-    console.log(this.prenotazioni);
-  }
+  ngOnInit() {}
 }
 
 ///sottoscrizione ai dati fatta
