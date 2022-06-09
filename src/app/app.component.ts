@@ -22,7 +22,7 @@ export class AppComponent {
     this.TeatroDBservice.getPrenotazioni$().subscribe({
       next: (res) => {
         //res è una stringa => trasformo in Json
-        this.teatro.prenotazioni = of(JSON.parse(res));
+        this.teatro.prenotazioni = JSON.parse(res);
         //console.log(this.teatro);
       },
     });
