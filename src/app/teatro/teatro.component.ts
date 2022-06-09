@@ -5,28 +5,34 @@ import { TeatroDBService } from '../teatro-db.service';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
 
+export interface Prenotazioni {
+  platea: Array<Array<string>>;
+  palco: Array<Array<string>>;
+}
+
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
   styleUrls: ['./teatro.component.css'],
 })
-export class TeatroComponent implements OnInit {
+export class TeatroComponent implements OnInit, Prenotazioni {
   //a = new PulsanteComponent();
-  @Input() prenotazioni;
+  @Input() prenotazioni: Prenotazioni;
+  platea: Array<Array<string>>;
+  palco: Array<Array<string>>;
   nome: string;
   filePlatea: number;
   postiPlatea: number;
   filePalco: number;
   postiPalco: number;
-  platea: Array<Array<string>>;
-  palco: Array<Array<string>>;
-  constructor(private TeatroDBservice: TeatroDBService) {
-    console.log(this.prenotazioni);
-  }
+  @Output() getTeatro = new EventEmitter<string>();
+  constructor(private TeatroDBservice: TeatroDBService) {}
   mostraPrenotazione($event) {
     this.nome = $event;
   }
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.prenotazioni);
+  }
 }
 
 ///sottoscrizione ai dati fatta

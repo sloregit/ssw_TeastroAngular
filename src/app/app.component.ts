@@ -1,5 +1,13 @@
 import { Component, VERSION } from '@angular/core';
 import { TeatroDBService } from './teatro-db.service';
+import { TeatroComponent } from './teatro/teatro.component';
+import { Observable, of } from 'rxjs';
+
+export class Teatro {
+  prenotazioni: Observable<string>;
+  platea: Array<Array<string>>;
+  palco: Array<Array<string>>;
+}
 
 @Component({
   selector: 'my-app',
@@ -7,15 +15,15 @@ import { TeatroDBService } from './teatro-db.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  datiIn;
+  teatro;
   constructor(private TeatroDBservice: TeatroDBService) {}
-  getTeatro() {
+  mostraTeatro() {
+    this.teatro = new Teatro();
     this.TeatroDBservice.getPrenotazioni$().subscribe({
       next: (res) => {
         //res è una stringa => trasformo in Json
-        this.datiIn = JSON.parse(res);
-        //this.platea = this.prenotazioni.platea;
-        //this.palco = this.prenotazioni.palco;
+        this.teatro.prenotazioni = of(JSON.parse(res));
+        //console.log(this.teatro);
       },
     });
   }

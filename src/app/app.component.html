@@ -1,2 +1,2 @@
-<button (click)="getTeatro()">Vedi Teatro</button>
-<app-teatro [prenotazioni]="datiIn"></app-teatro>
+<button (click)="mostraTeatro()">Vedi Teatro</button>
+<app-teatro [prenotazioni]="teatro.prenotazioni | async"></app-teatro>
