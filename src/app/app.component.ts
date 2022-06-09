@@ -15,14 +15,15 @@ export class Teatro {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  teatro;
+  prenotazioni;
   constructor(private TeatroDBservice: TeatroDBService) {}
   mostraTeatro() {
-    this.teatro = new Teatro();
     this.TeatroDBservice.getPrenotazioni$().subscribe({
       next: (res) => {
+        this.prenotazioni = of(JSON.parse(res));
+
         //res è una stringa => trasformo in Json
-        this.teatro.prenotazioni = JSON.parse(res);
+
         //console.log(this.teatro);
       },
     });
