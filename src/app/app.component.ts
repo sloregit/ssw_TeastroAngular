@@ -19,7 +19,6 @@ export class Teatro {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  prenotazioni;
   teatro: Teatro;
   constructor(private TeatroDBservice: TeatroDBService) {}
   mostraTeatro() {

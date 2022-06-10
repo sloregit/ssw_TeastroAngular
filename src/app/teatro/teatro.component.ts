@@ -14,6 +14,7 @@ import { Teatro } from '../app.component';
 export class TeatroComponent implements OnInit {
   //a = new PulsanteComponent();
   @Input() teatro;
+  prenotazioni;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   nome: string;
