@@ -17,15 +17,4 @@ export class Teatro {
 export class AppComponent {
   prenotazioni;
   constructor(private TeatroDBservice: TeatroDBService) {}
-  mostraTeatro() {
-    this.TeatroDBservice.getPrenotazioni$().subscribe({
-      next: (res) => {
-        this.prenotazioni = of(JSON.parse(res));
-
-        //res è una stringa => trasformo in Json
-
-        //console.log(this.teatro);
-      },
-    });
-  }
 }
