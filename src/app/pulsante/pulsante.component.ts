@@ -20,6 +20,7 @@ export class PulsanteComponent implements OnInit {
   mostraNome() {
     try {
       this.mostraNomeEmitter.emit(this.nome);
+
     } catch (e: any) {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);
     }
