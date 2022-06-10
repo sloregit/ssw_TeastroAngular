@@ -17,7 +17,7 @@ export interface Prenotazioni {
 })
 export class TeatroComponent implements OnInit {
   //a = new PulsanteComponent();
-  prenotazioni: Prenotazioni;
+  @Input() prenotazioni;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   nome: string;
@@ -26,14 +26,20 @@ export class TeatroComponent implements OnInit {
   filePalco: number;
   postiPalco: number;
   //@Output() getTeatro = new EventEmitter();
-  
+
   constructor(private TeatroDBservice: TeatroDBService) {
     //this.prenotazioni.subscribe((val) => console.log(val));
+    console.log(this.prenotazioni);
+  }
+  indietro(){
+    this.prenotazioni = undefined;
   }
   mostraPrenotazione($event) {
     this.nome = $event;
   }
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.prenotazioni);
+  }
 }
 
 ///sottoscrizione ai dati fatta
