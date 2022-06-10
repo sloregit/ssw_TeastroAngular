@@ -34,6 +34,7 @@ Da fare:
 
 Selezionato -> cambia colore, salva il nome per inviarlo al DB 
 Set --> il pulsante aggiorna le prenotazioni e invia 
+se il posto è prenotato non lascia fare
 
 
 */
