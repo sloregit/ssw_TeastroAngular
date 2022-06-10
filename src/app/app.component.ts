@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title: string = 'Prenota il tuo posto';
+  title: string = 'Consulta la disponibilità';
   prenotazioni: Observable<string>;
   constructor(private TeatroDBservice: TeatroDBService) {}
 

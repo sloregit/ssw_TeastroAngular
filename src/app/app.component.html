@@ -1,8 +1,7 @@
-<h2>{{ title }}</h2>
 <div *ngIf="prenotazioni === undefined">
+  <h3>{{ title }}</h3>
   <button (click)="mostraTeatro()">Teatro</button><br />
   <p>{{ prenotazioni }}</p>
-  <app-inserimento></app-inserimento>
 </div>
 <div *ngIf="prenotazioni != undefined">
   <app-teatro

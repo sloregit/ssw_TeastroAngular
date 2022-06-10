@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TeatroComponent implements OnInit {
   //a = new PulsanteComponent();
+  title: string = 'Seleziona il posto, inserisci il tuo nome e premi conferma';
   @Input() prenotazioni;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
