@@ -28,3 +28,12 @@ export class AppComponent {
     });
   }
 }
+
+/*
+Da fare:
+
+Selezionato -> cambia colore, salva il nome per inviarlo al DB 
+Set --> il pulsante aggiorna le prenotazioni e invia 
+
+
+*/
