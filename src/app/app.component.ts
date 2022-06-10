@@ -3,32 +3,28 @@ import { TeatroDBService } from './teatro-db.service';
 import { TeatroComponent } from './teatro/teatro.component';
 import { Observable, of } from 'rxjs';
 
-export class Teatro {
-  prenotazioni;
-  platea: Array<Array<string>>;
-  palco: Array<Array<string>>;
-  filePlatea: number;
-  postiPlatea: number;
-  filePalco: number;
-  postiPalco: number;
-}
-
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  teatro: Teatro;
+  title: string = 'Prenota il tuo posto';
+  prenotazioni: Observable<string>;
   constructor(private TeatroDBservice: TeatroDBService) {}
+
+  //@Output in TeatroComponent
+  clean(prenotazioni: undefined) {
+    this.prenotazioni = prenotazioni;
+  }
+  //get dati + invio a teatroComponent
   mostraTeatro() {
-    this.teatro = new Teatro();
     this.TeatroDBservice.getPrenotazioni$().subscribe({
       next: (res) => {
-        this.teatro.prenotazioni = JSON.parse(res);
-        //res è una stringa => trasformo in Json
-        console.log(this.teatro);
+        this.prenotazioni = of(JSON.parse(res));
       },
+      error: (err) =>
+        console.error('Observer got an error: ' + JSON.stringify(err)),
     });
   }
 }

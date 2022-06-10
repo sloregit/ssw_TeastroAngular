@@ -1,7 +1,3 @@
-<br />
-<br />
-
-<app-inserimento></app-inserimento>
 <p
   #show
   [ngStyle]="{ height: '20px', width: '50%', border: '0.5px dashed black' }"
@@ -12,7 +8,7 @@
   <div #platea id="platea_div" *ngFor="let prenotazioni of platea">
     <span *ngFor="let posto of prenotazioni; let i = index">
       <app-pulsante
-        (mostraNome)="mostraPrenotazione($event)"
+        (mostraNomeEmitter)="mostraPrenotazione($event)"
         [nome]="posto"
         [etichetta]="'P' + i"
       ></app-pulsante>
@@ -22,14 +18,14 @@
   <div #palco id="palco_div" *ngFor="let prenotazioni of palco">
     <span *ngFor="let posto of prenotazioni; let i = index">
       <app-pulsante
-        (mostraNome)="mostraPrenotazione($event)"
+        (mostraNomeEmitter)="mostraPrenotazione($event)"
         [nome]="posto"
         [etichetta]="'P' + i"
       ></app-pulsante>
     </span>
   </div>
   <div>
-    <button (click)="indietro()">indietro</button>
+    <button (click)="eliminaTeatro()">indietro</button>
     <button>conferma</button>
   </div>
 </div>

@@ -1,2 +1,12 @@
-<button #get (click)="mostraTeatro()">Teatro</button>
-<app-teatro [teatro]="teatro"></app-teatro>
+<h2>{{ title }}</h2>
+<div *ngIf="prenotazioni === undefined">
+  <button (click)="mostraTeatro()">Teatro</button><br />
+  <p>{{ prenotazioni }}</p>
+  <app-inserimento></app-inserimento>
+</div>
+<div *ngIf="prenotazioni != undefined">
+  <app-teatro
+    [prenotazioni]="prenotazioni | async"
+    (eliminaTeatroEmitter)="clean($event)"
+  ></app-teatro>
+</div>

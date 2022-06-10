@@ -1,11 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 //import { PulsanteComponent } from '../pulsante/pulsante.component';
 
-import { TeatroDBService } from '../teatro-db.service';
-import { Observable } from 'rxjs';
-import { of } from 'rxjs';
-import { Teatro } from '../app.component';
-
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
@@ -13,8 +8,7 @@ import { Teatro } from '../app.component';
 })
 export class TeatroComponent implements OnInit {
   //a = new PulsanteComponent();
-  @Input() teatro;
-  prenotazioni;
+  @Input() prenotazioni;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   nome: string;
@@ -22,20 +16,23 @@ export class TeatroComponent implements OnInit {
   postiPlatea: number;
   filePalco: number;
   postiPalco: number;
-  //@Output() getTeatro = new EventEmitter();
+  @Output() eliminaTeatroEmitter = new EventEmitter();
 
-  constructor(private TeatroDBservice: TeatroDBService) {
+  constructor() {
     //this.prenotazioni.subscribe((val) => console.log(val));
-    console.log(this.teatro);
   }
-  indietro() {
-    this.teatro = undefined;
+  eliminaTeatro() {
+    this.prenotazioni = undefined;
+    this.eliminaTeatroEmitter.emit(this.prenotazioni);
   }
+
+  //@Output in pulsante: click del pulsante x vedere il nome
   mostraPrenotazione($event) {
     this.nome = $event;
   }
   ngOnInit() {
-    console.log(this.prenotazioni);
+    this.platea = this.prenotazioni.platea;
+    this.palco = this.prenotazioni.palco;
   }
 }
 
