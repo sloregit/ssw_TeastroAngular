@@ -25,18 +25,10 @@ export class TeatroComponent implements OnInit {
   postiPlatea: number;
   filePalco: number;
   postiPalco: number;
-  mostraTeatro() {}
+  //@Output() getTeatro = new EventEmitter();
+  
   constructor(private TeatroDBservice: TeatroDBService) {
     //this.prenotazioni.subscribe((val) => console.log(val));
-    this.TeatroDBservice.getPrenotazioni$().subscribe({
-      next: (res) => {
-        this.prenotazioni = JSON.parse(res);
-        this.platea = this.prenotazioni.platea;
-        this.palco = this.prenotazioni.palco;
-        //res è una stringa => trasformo in Json
-        console.log(this.prenotazioni);
-      },
-    });
   }
   mostraPrenotazione($event) {
     this.nome = $event;
