@@ -4,11 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TeatroDBService } from '../teatro-db.service';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
-
-export interface Prenotazioni {
-  platea: Array<Array<string>>;
-  palco: Array<Array<string>>;
-}
+import { Teatro } from '../app.component';
 
 @Component({
   selector: 'app-teatro',
@@ -17,7 +13,7 @@ export interface Prenotazioni {
 })
 export class TeatroComponent implements OnInit {
   //a = new PulsanteComponent();
-  @Input() prenotazioni;
+  @Input() teatro;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   nome: string;
@@ -29,10 +25,10 @@ export class TeatroComponent implements OnInit {
 
   constructor(private TeatroDBservice: TeatroDBService) {
     //this.prenotazioni.subscribe((val) => console.log(val));
-    console.log(this.prenotazioni);
+    console.log(this.teatro);
   }
-  indietro(){
-    this.prenotazioni = undefined;
+  indietro() {
+    this.teatro = undefined;
   }
   mostraPrenotazione($event) {
     this.nome = $event;

@@ -4,9 +4,13 @@ import { TeatroComponent } from './teatro/teatro.component';
 import { Observable, of } from 'rxjs';
 
 export class Teatro {
-  prenotazioni: Observable<string>;
+  prenotazioni;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
+  filePlatea: number;
+  postiPlatea: number;
+  filePalco: number;
+  postiPalco: number;
 }
 
 @Component({
@@ -16,15 +20,15 @@ export class Teatro {
 })
 export class AppComponent {
   prenotazioni;
-  t = new Teatro();
+  teatro: Teatro;
   constructor(private TeatroDBservice: TeatroDBService) {}
   mostraTeatro() {
+    this.teatro = new Teatro();
     this.TeatroDBservice.getPrenotazioni$().subscribe({
       next: (res) => {
-        this.prenotazioni = of(JSON.parse(res));
-        this.t.prenotazioni = this.prenotazioni;
+        this.teatro.prenotazioni = JSON.parse(res);
         //res è una stringa => trasformo in Json
-        console.log('app: ' + this.prenotazioni);
+        console.log(this.teatro);
       },
     });
   }
