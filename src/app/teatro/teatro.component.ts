@@ -28,6 +28,8 @@ export class TeatroComponent implements OnInit {
   }
 
   //@Output in pulsante: click del pulsante x vedere il nome
+
+  /////RIPARTI DA QUIIIIII il pusante contiene la prenotazione da aggiornare
   mostraPrenotazione($event) {
     this.nome = $event.nome;
     this.selezionato = $event;
