@@ -32,9 +32,8 @@ export class AppComponent {
 /*
 Da fare:
 
-Selezionato -> cambia colore, salva il nome per inviarlo al DB 
-Set --> il pulsante aggiorna le prenotazioni e invia 
-se il posto è prenotato non lascia fare
-
-
+Selezionato --> è l'ultimo cliccato, cambia colore
+Prenotato --> Selezionato != 'x'
+if (selezionato) -> conferma.click -> if (non prenotato) --> prenota il posto, aggiorna il DB
+ 
 */

@@ -12,6 +12,7 @@
     <span *ngFor="let posto of prenotazioni; let i = index">
       <app-pulsante
         (mostraNomeEmitter)="mostraPrenotazione($event)"
+        (selezionatoEmitter)="isSelezionato($event)"
         [nome]="posto"
         [etichetta]="'P' + i"
       ></app-pulsante>

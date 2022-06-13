@@ -15,11 +15,12 @@ import {
 export class PulsanteComponent implements OnInit {
   @Input() etichetta: string;
   @Input() nome: string;
-  selezionato: boolean;
-  @Output() mostraNomeEmitter = new EventEmitter<string>();
+  @Output() mostraNomeEmitter = new EventEmitter<object>();
+  @Output() selezionatoEmitter = new EventEmitter();
   mostraNome() {
     try {
-      this.mostraNomeEmitter.emit(this.nome);
+      this.mostraNomeEmitter.emit(this);
+      // this.selezionatoEmitter.emit(this);
     } catch (e: any) {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);
     }

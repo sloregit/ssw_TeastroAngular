@@ -16,6 +16,7 @@ export class TeatroComponent implements OnInit {
   postiPlatea: number;
   filePalco: number;
   postiPalco: number;
+  selezionato;
   @Output() eliminaTeatroEmitter = new EventEmitter();
 
   constructor() {
@@ -28,8 +29,11 @@ export class TeatroComponent implements OnInit {
 
   //@Output in pulsante: click del pulsante x vedere il nome
   mostraPrenotazione($event) {
-    this.nome = $event;
+    this.nome = $event.nome;
+    this.selezionato = $event;
+    console.log(this.selezionato);
   }
+  isSelezionato($event) {}
   ngOnInit() {
     this.platea = this.prenotazioni.platea;
     this.palco = this.prenotazioni.palco;
