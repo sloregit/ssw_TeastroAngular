@@ -1,1 +1,6 @@
-<input type="text" placeholder="il tuo nome?" />
+<input
+  #inserisci
+  type="text"
+  (keyup)="passaNome($event)"
+  placeholder="il tuo nome?"
+/>
