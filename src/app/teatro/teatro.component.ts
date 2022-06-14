@@ -11,17 +11,12 @@ export class TeatroComponent implements OnInit {
   @Input() prenotazioni;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
+  selezionato: object;
   nome: string;
-  filePlatea: number;
-  postiPlatea: number;
-  filePalco: number;
-  postiPalco: number;
-  selezionato;
+  fila: number;
+  posto: number;
   @Output() eliminaTeatroEmitter = new EventEmitter();
-
-  constructor() {
-    //this.prenotazioni.subscribe((val) => console.log(val));
-  }
+  constructor() {}
   eliminaTeatro() {
     this.prenotazioni = undefined;
     this.eliminaTeatroEmitter.emit(this.prenotazioni);
@@ -30,12 +25,23 @@ export class TeatroComponent implements OnInit {
   //@Output in pulsante: click del pulsante x vedere il nome
 
   /////RIPARTI DA QUIIIIII il pusante contiene la prenotazione da aggiornare
-  mostraPrenotazione($event) {
-    this.nome = $event.nome;
+  mostraPrenotazione($event, fila, posto) {
+    if ($event.nome != 'x') {
+      this.nome = $event.nome;
+    }
     this.selezionato = $event;
-    console.log(this.selezionato);
+    this.fila = fila;
+    this.posto = posto;
+    console.log(
+      'prenotazione: ' +
+        this.nome +
+        ' fila: ' +
+        this.fila +
+        ' posto: ' +
+        this.posto
+    );
   }
-  isSelezionato($event) {}
+  //isSelezionato($event) {}
   ngOnInit() {
     this.platea = this.prenotazioni.platea;
     this.palco = this.prenotazioni.palco;
