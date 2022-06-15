@@ -8,7 +8,6 @@ import { TeatroDBService } from './teatro-db.service';
 import { InserimentoComponent } from './inserimento/inserimento.component';
 import { TeatroComponent } from './teatro/teatro.component';
 import { PulsanteComponent } from './pulsante/pulsante.component';
-import { PulsanteGetComponent } from './pulsante-get/pulsante-get.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
@@ -17,7 +16,6 @@ import { PulsanteGetComponent } from './pulsante-get/pulsante-get.component';
     InserimentoComponent,
     PulsanteComponent,
     TeatroComponent,
-    PulsanteGetComponent,
   ],
   bootstrap: [AppComponent],
   providers: [TeatroDBService],
