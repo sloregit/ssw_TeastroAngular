@@ -1,5 +1,7 @@
 <h3>{{ title }}</h3>
-<app-inserimento></app-inserimento>
+<app-inserimento
+  (passaNomeEmitter)="nomePrenotazione($event)"
+></app-inserimento>
 <br />
 <p
   #show
@@ -11,7 +13,7 @@
   <div id="platea_div" *ngFor="let prenotazioni of platea; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
-        (mostraNomeEmitter)="mostraPrenotazione($event, fila, posto)"
+        (mostraNomeEmitter)="mostraPrenotazione($event, fila, posto, 'platea')"
         [nome]="persona"
         [etichetta]="'P' + posto"
       ></app-pulsante>
@@ -25,7 +27,7 @@
   >
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
-        (mostraNomeEmitter)="mostraPrenotazione($event, fila, posto)"
+        (mostraNomeEmitter)="mostraPrenotazione($event, fila, posto, 'palco')"
         [nome]="persona"
         [etichetta]="'P' + posto"
       ></app-pulsante>
@@ -34,6 +36,6 @@
   <br />
   <div>
     <button (click)="eliminaTeatro()">indietro</button>
-    <button>conferma</button>
+    <button (click)="prenota()">conferma</button>
   </div>
 </div>
