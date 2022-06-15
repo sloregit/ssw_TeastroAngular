@@ -5,12 +5,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './inserimento.component.html',
   styleUrls: ['./inserimento.component.css'],
 })
-export class InserimentoComponent implements OnInit {
+export class InserimentoComponent {
   @Output() passaNomeEmitter = new EventEmitter();
   passaNome($event) {
+    let nome = $event.toString();
     this.passaNomeEmitter.emit($event.target.value);
   }
   constructor() {}
-
-  ngOnInit() {}
 }

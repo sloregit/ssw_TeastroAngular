@@ -18,7 +18,7 @@ export class TeatroComponent implements OnInit {
   nomeDaInserire;
   nuovaPrenotazione;
   evidenzia;
-  nomePrenotazione($event) {
+  nomePrenotazione($event: string) {
     this.nomeDaInserire = $event;
   }
   @Output() eliminaTeatroEmitter = new EventEmitter();
@@ -47,8 +47,6 @@ export class TeatroComponent implements OnInit {
     if ($event.nome != 'x') {
       this.nome = $event.nome;
     }
-    //this.evidenzia = false;
-    //this.evidenzia = true;
     this.zona = zona;
     this.selezionato = $event;
     this.fila = fila;
