@@ -15,10 +15,13 @@ import {
 export class PulsanteComponent implements OnInit {
   @Input() etichetta: string;
   @Input() nome: string;
+  evidenzia;
   @Output() mostraNomeEmitter = new EventEmitter<object>();
   @Output() selezionatoEmitter = new EventEmitter();
+
   mostraNome() {
     try {
+      this.evidenzia = true;
       this.mostraNomeEmitter.emit(this);
       // this.selezionatoEmitter.emit(this);
     } catch (e: any) {

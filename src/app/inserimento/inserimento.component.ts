@@ -6,9 +6,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./inserimento.component.css'],
 })
 export class InserimentoComponent implements OnInit {
-  @Output() passanomeEmitter = new EventEmitter<string>();
+  @Output() passaNomeEmitter = new EventEmitter();
   passaNome($event) {
-    this.passanomeEmitter.emit($event.target.value);
+    this.passaNomeEmitter.emit($event.target.value);
   }
   constructor() {}
 

@@ -2,7 +2,7 @@
   [ngStyle]="{
     'background-color': nome != 'x' ? 'red' : 'turquoise'
   }"
-  class="pulsante"
+  [ngClass]="evidenzia == 'true' ? 'selezionato' : 'my_class2'"
   (click)="mostraNome()"
 >
   {{ etichetta }}
