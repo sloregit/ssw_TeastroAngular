@@ -10,7 +10,11 @@ export class zona {
     this.postiPerFila = postiPerFila;
   }
 }
-
+export interface Prenotazione {
+  zona: string;
+  fila: number;
+  posto: number;
+}
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
@@ -23,7 +27,7 @@ export class TeatroComponent implements OnInit {
   palco: Array<Array<string>>;
   nome: string;
   nomeDaInserire;
-  nuovaPrenotazione;
+  nuovaPrenotazione: Prenotazione;
   evidenzia;
   nomePrenotazione($event: string) {
     this.nomeDaInserire = $event;
@@ -36,25 +40,27 @@ export class TeatroComponent implements OnInit {
   }
   prenota() {
     //a seconda della zona
-    if (this.nuovaPrenotazione[0] === 'platea') {
-      this.prenotazioni.platea[this.nuovaPrenotazione[1]][
-        this.nuovaPrenotazione[2]
+    if (this.nuovaPrenotazione.zona === 'platea') {
+      this.prenotazioni.platea[this.nuovaPrenotazione.fila][
+        this.nuovaPrenotazione.posto
       ] = this.nomeDaInserire;
     }
     if (this.nuovaPrenotazione[0] === 'palco') {
-      this.prenotazioni.palco[this.nuovaPrenotazione[1]][
-        this.nuovaPrenotazione[2]
+      this.prenotazioni.palco[this.nuovaPrenotazione.fila][
+        this.nuovaPrenotazione.posto
       ] = this.nomeDaInserire;
     }
     console.log(this.prenotazioni);
   }
   //@Output in pulsante: click del pulsante x vedere il nome
-  mostraPrenotazione($event, fila, posto, zona) {
+  mostraPrenotazione($event, fila: number, posto: number, zona: string) {
     if ($event.nome != 'x') {
       this.nome = $event.nome;
     }
-    this.nuovaPrenotazione = [zona, fila, posto];
-    console.log(this.nuovaPrenotazione);
+    console.log(typeof this.nuovaPrenotazione);
+    this.nuovaPrenotazione.fila = fila;
+    this.nuovaPrenotazione.posto = posto;
+    this.nuovaPrenotazione.zona = zona;
   }
   //isSelezionato($event) {}
   ngOnInit() {
