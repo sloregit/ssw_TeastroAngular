@@ -16,15 +16,8 @@ export class PulsanteComponent {
   @Input() etichetta: string;
   @Input() nome: string;
   @Output() mostraNomeEmitter = new EventEmitter<object>();
-  @Output() selezionatoEmitter = new EventEmitter();
   evidenzia: boolean;
-  stile() {
-    if (this.evidenzia == true) {
-      this.evidenzia = false;
-      return { 'background-color': 'green' };
-    }
-    return { 'background-color': this.nome != 'x' ? 'red' : 'turquoise' };
-  }
+  //invia al parent i dati del pulsante cliccato(this)
   mostraNome() {
     try {
       this.evidenzia = true;
@@ -32,6 +25,14 @@ export class PulsanteComponent {
     } catch (e: any) {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);
     }
+  }
+  //modifica lo stile dell'ultimo pulsante cliccato e dei posti prenotati
+  stile() {
+    if (this.evidenzia == true) {
+      this.evidenzia = false;
+      return { 'background-color': 'green' };
+    }
+    return { 'background-color': this.nome != 'x' ? 'red' : 'turquoise' };
   }
   constructor() {}
 }

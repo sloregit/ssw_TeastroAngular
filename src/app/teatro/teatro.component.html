@@ -13,16 +13,17 @@
   <div id="platea_div" *ngFor="let prenotazioni of platea; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
-        (mostraNomeEmitter)="mostraPrenotazione($event, fila, posto, 'platea')"
+        (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
         [nome]="persona"
         [etichetta]="'P' + posto"
       ></app-pulsante>
     </span>
   </div>
+  <br />
   <div id="platea_div" *ngFor="let prenotazioni of palco; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
-        (mostraNomeEmitter)="mostraPrenotazione($event, fila, posto, 'platea')"
+        (mostraNomeEmitter)="mostraPrenotazione($event, 'palco', fila, posto)"
         [nome]="persona"
         [etichetta]="'P' + posto"
       ></app-pulsante>

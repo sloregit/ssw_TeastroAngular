@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-inserimento',
@@ -8,8 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class InserimentoComponent {
   @Output() passaNomeEmitter = new EventEmitter();
   passaNome($event) {
-    let nome = $event.toString();
-    this.passaNomeEmitter.emit($event.target.value);
+    this.passaNomeEmitter.emit($event.target.value.toString());
   }
   constructor() {}
 }

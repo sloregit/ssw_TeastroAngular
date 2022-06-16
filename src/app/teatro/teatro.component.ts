@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export class zona {
   prenotazioni;
@@ -10,10 +11,15 @@ export class zona {
     this.postiPerFila = postiPerFila;
   }
 }
-export interface Prenotazione {
+export class Prenotazione {
   zona: string;
   fila: number;
   posto: number;
+  constructor(zona: string, fila: number, posto: number) {
+    this.zona = zona;
+    this.fila = fila;
+    this.posto = posto;
+  }
 }
 @Component({
   selector: 'app-teatro',
@@ -21,7 +27,7 @@ export interface Prenotazione {
   styleUrls: ['./teatro.component.css'],
 })
 export class TeatroComponent implements OnInit {
-  title: string = 'Inserisci il tuo nome, seleziona il posto e premi conferma';
+  title: string = 'Inserisci il nome, seleziona il posto e premi conferma';
   @Input() prenotazioni;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
@@ -29,44 +35,52 @@ export class TeatroComponent implements OnInit {
   nomeDaInserire: string;
   nuovaPrenotazione: Prenotazione;
   evidenzia: boolean;
-  nomePrenotazione($event: string) {
-    this.nomeDaInserire = $event;
+  constructor() {
+    console.log(typeof this.prenotazioni);
   }
+
+  //torna alla pagina iniziale visualizzataSE(ngIf prenotazioni != undefined)
   @Output() eliminaTeatroEmitter = new EventEmitter();
-  constructor() {}
   eliminaTeatro() {
     this.prenotazioni = undefined;
     this.eliminaTeatroEmitter.emit(this.prenotazioni);
   }
+
+  //@output in "InserimentoComponent" nomeDaInserire = input utente
+  nomePrenotazione($event: string) {
+    this.nomeDaInserire = $event;
+  }
+
+  //pulsante Conferma
+  //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
     //a seconda della zona
     if (this.nuovaPrenotazione.zona === 'platea') {
       this.prenotazioni.platea[this.nuovaPrenotazione.fila][
         this.nuovaPrenotazione.posto
       ] = this.nomeDaInserire;
-    }
-    if (this.nuovaPrenotazione[0] === 'palco') {
+    } else if (this.nuovaPrenotazione.zona === 'palco') {
       this.prenotazioni.palco[this.nuovaPrenotazione.fila][
         this.nuovaPrenotazione.posto
       ] = this.nomeDaInserire;
     }
     console.log(this.prenotazioni);
   }
-  //@Output in pulsante: click del pulsante x vedere il nome
-  mostraPrenotazione($event, fila: number, posto: number, zona: string) {
+
+  //@Output in pulsante: click del pulsante x vedere il nome + genera la prenotazione
+  mostraPrenotazione($event, zona: string, fila: number, posto: number) {
     if ($event.nome != 'x') {
       this.nome = $event.nome;
     }
+    this.nuovaPrenotazione = new Prenotazione(zona, fila, posto);
     console.log(this.nuovaPrenotazione);
-    this.nuovaPrenotazione.fila = fila;
-    this.nuovaPrenotazione.posto = posto;
-    this.nuovaPrenotazione.zona = zona;
   }
-  //isSelezionato($event) {}
+  //invocata dopo la generazione del component
+  //this.prenotazioni è async, sarà pronto quando OnInit è invocata
   ngOnInit() {
     this.platea = this.prenotazioni.platea;
     this.palco = this.prenotazioni.palco;
 
-    console.log(this.platea);
+    console.log(typeof this.prenotazioni);
   }
 }
