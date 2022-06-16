@@ -1,5 +1,3 @@
-<div *ngFor="zona.file; let fila = index">
-  <span *ngFor="zona.postiPerFila; let posto = index">
-    <app-pulsante> [nome]="persona" [etichetta]="'P' + posto" ></app-pulsante>
-  </span>
+<div *ngFor="let file of prenotazioni; let fila = index">
+  <span *ngFor="let persona of file; let posto = index"> </span>
 </div>
