@@ -26,9 +26,9 @@ export class TeatroComponent implements OnInit {
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   nome: string;
-  nomeDaInserire;
+  nomeDaInserire: string;
   nuovaPrenotazione: Prenotazione;
-  evidenzia;
+  evidenzia: boolean;
   nomePrenotazione($event: string) {
     this.nomeDaInserire = $event;
   }
@@ -57,7 +57,7 @@ export class TeatroComponent implements OnInit {
     if ($event.nome != 'x') {
       this.nome = $event.nome;
     }
-    console.log(typeof this.nuovaPrenotazione);
+    console.log(this.nuovaPrenotazione);
     this.nuovaPrenotazione.fila = fila;
     this.nuovaPrenotazione.posto = posto;
     this.nuovaPrenotazione.zona = zona;
