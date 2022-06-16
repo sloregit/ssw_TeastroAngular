@@ -28,12 +28,3 @@ export class AppComponent {
     });
   }
 }
-
-/*
-Da fare:
-
-Selezionato --> è l'ultimo cliccato, cambia colore
-Prenotato --> Selezionato != 'x'
-if (selezionato) -> conferma.click -> if (non prenotato) --> prenota il posto, aggiorna il DB
- 
-*/
