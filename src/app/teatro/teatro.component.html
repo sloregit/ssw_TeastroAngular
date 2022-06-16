@@ -10,32 +10,11 @@
   {{ nome }}
 </p>
 <div *ngIf="prenotazioni != undefined">
-  <div id="platea_div" *ngFor="let prenotazioni of platea; let fila = index">
-    <span *ngFor="let persona of prenotazioni; let posto = index">
-      <app-pulsante
-        (mostraNomeEmitter)="mostraPrenotazione($event, fila, posto, 'platea')"
-        [nome]="persona"
-        [etichetta]="'P' + posto"
-      ></app-pulsante>
-    </span>
-  </div>
+  <app-zona [prenotazioni]="platea"></app-zona>
   <br />
-  <div
-    #palco
-    id="palco_div"
-    *ngFor="let prenotazioni of palco; let fila = index"
-  >
-    <span *ngFor="let persona of prenotazioni; let posto = index">
-      <app-pulsante
-        (mostraNomeEmitter)="mostraPrenotazione($event, fila, posto, 'palco')"
-        [nome]="persona"
-        [etichetta]="'P' + posto"
-      ></app-pulsante>
-    </span>
-  </div>
+  <app-zona [prenotazioni]="palco"></app-zona>
   <br />
   <div>
     <button (click)="eliminaTeatro()">indietro</button>
-    <button (click)="prenota()">conferma</button>
   </div>
 </div>
