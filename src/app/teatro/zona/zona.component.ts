@@ -20,6 +20,7 @@ export class ZonaComponent implements OnInit {
   nomePrenotazione($event: string) {
     this.nomeDaInserire = $event;
   }
+  @Output() mostraNomeEmitter = new EventEmitter<string>();
   @Output() eliminaTeatroEmitter = new EventEmitter();
   constructor() {}
   eliminaTeatro() {

@@ -43,17 +43,12 @@ export class TeatroComponent implements OnInit {
     console.log(this.prenotazioni);
   }*/
   //@Output in pulsante: click del pulsante x vedere il nome
-  /* mostraPrenotazione($event, fila, posto, zona) {
+  mostraPrenotazione($event) {
     if ($event.nome != 'x') {
       this.nome = $event.nome;
     }
-    this.zona = zona;
-    this.selezionato = $event;
-    this.fila = fila;
-    this.posto = posto;
-    this.nuovaPrenotazione = [this.zona, this.fila, this.posto];
-    console.log(this.evidenzia);
-  }*/
+    console.log(this.nome);
+  }
   //isSelezionato($event) {}
   ngOnInit() {
     this.platea = this.prenotazioni.platea;

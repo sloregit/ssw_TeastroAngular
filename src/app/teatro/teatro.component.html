@@ -10,7 +10,11 @@
   {{ nome }}
 </p>
 <div *ngIf="prenotazioni != undefined">
-  <app-zona [prenotazioni]="platea"></app-zona>
+  <app-zona
+    [prenotazioni]="platea"
+    (mostraNomeEmitter)="mostraPrenotazione($event)"
+  >
+  </app-zona>
   <br />
   <app-zona [prenotazioni]="palco"></app-zona>
   <br />
