@@ -1,16 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export class zona {
-  prenotazioni;
-  file;
-  postiPerFila;
-  constructor(prenotazioni, file, postiPerFila) {
-    this.prenotazioni = prenotazioni;
-    this.file = file;
-    this.postiPerFila = postiPerFila;
-  }
-}
 export class Prenotazione {
   zona: string;
   fila: number;
@@ -21,6 +11,7 @@ export class Prenotazione {
     this.posto = posto;
   }
 }
+
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
