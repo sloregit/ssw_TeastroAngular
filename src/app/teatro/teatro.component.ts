@@ -1,5 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+export class zona {
+  prenotazioni;
+  file;
+  postiPerFila;
+  constructor(prenotazioni, file, postiPerFila) {
+    this.prenotazioni = prenotazioni;
+    this.file = file;
+    this.postiPerFila = postiPerFila;
+  }
+}
+
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
@@ -8,7 +19,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TeatroComponent implements OnInit {
   title: string = 'Inserisci il tuo nome, seleziona il posto e premi conferma';
   @Input() prenotazioni;
-  platea: Array<Array<string>>;
+  platea: zona;
   palco: Array<Array<string>>;
   //selezionato: object;
   nome: string;
@@ -51,8 +62,15 @@ export class TeatroComponent implements OnInit {
   }
   //isSelezionato($event) {}
   ngOnInit() {
-    this.platea = this.prenotazioni.platea;
+    console.log(this.prenotazioni);
+    this.platea = new zona(
+      this.prenotazioni.platea,
+      this.prenotazioni.platea.length,
+      this.prenotazioni.platea[0].length
+    );
     this.palco = this.prenotazioni.palco;
+
+    console.log(this.platea);
   }
 }
 
