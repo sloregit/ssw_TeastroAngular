@@ -21,11 +21,7 @@ export class TeatroComponent implements OnInit {
   @Input() prenotazioni;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
-  //selezionato: object;
   nome: string;
-  //fila: number;
-  //posto: number;
-  //zona;
   nomeDaInserire;
   nuovaPrenotazione;
   evidenzia;
@@ -68,6 +64,3 @@ export class TeatroComponent implements OnInit {
     console.log(this.platea);
   }
 }
-
-///sottoscrizione ai dati fatta
-///creare array di pulsanti e mapparli coi dati
