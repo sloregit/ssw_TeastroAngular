@@ -2,7 +2,7 @@ import { Component, VERSION } from '@angular/core';
 import { AppDBService } from './app-db.service';
 import { TeatroComponent } from './teatro/teatro.component';
 import { Observable, of, map } from 'rxjs';
-
+ 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
