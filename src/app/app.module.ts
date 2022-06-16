@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TeatroDBService } from './teatro-db.service';
+import { AppDBService } from './app-db.service';
 import { InserimentoComponent } from './inserimento/inserimento.component';
 import { TeatroComponent } from './teatro/teatro.component';
 import { PulsanteComponent } from './teatro/pulsante/pulsante.component';
@@ -20,6 +20,6 @@ import { ZonaComponent } from './teatro/zona/zona.component';
     ZonaComponent,
   ],
   bootstrap: [AppComponent],
-  providers: [TeatroDBService],
+  providers: [AppDBService],
 })
 export class AppModule {}

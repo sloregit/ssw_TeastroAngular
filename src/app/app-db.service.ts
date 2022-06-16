@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 //Esempio di come si prendono i dati da TeatroDBService
 @Injectable()
-export class TeatroDBService {
+export class AppDBService {
   Key: string = '0ef3f513';
   URL: string =
     'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/';
