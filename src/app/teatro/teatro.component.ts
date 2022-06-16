@@ -19,7 +19,7 @@ export class zona {
 export class TeatroComponent implements OnInit {
   title: string = 'Inserisci il tuo nome, seleziona il posto e premi conferma';
   @Input() prenotazioni;
-  platea: zona;
+  platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   //selezionato: object;
   nome: string;
@@ -38,8 +38,7 @@ export class TeatroComponent implements OnInit {
     this.prenotazioni = undefined;
     this.eliminaTeatroEmitter.emit(this.prenotazioni);
   }
-
-  /*prenota() {
+  prenota() {
     //a seconda della zona
     if (this.nuovaPrenotazione[0] === 'platea') {
       this.prenotazioni.platea[this.nuovaPrenotazione[1]][
@@ -52,22 +51,18 @@ export class TeatroComponent implements OnInit {
       ] = this.nomeDaInserire;
     }
     console.log(this.prenotazioni);
-  }*/
+  }
   //@Output in pulsante: click del pulsante x vedere il nome
-  mostraPrenotazione($event) {
+  mostraPrenotazione($event, fila, posto, zona) {
     if ($event.nome != 'x') {
       this.nome = $event.nome;
     }
-    console.log(this.nome);
+    this.nuovaPrenotazione = [zona, fila, posto];
+    console.log(this.nuovaPrenotazione);
   }
   //isSelezionato($event) {}
   ngOnInit() {
-    console.log(this.prenotazioni);
-    this.platea = new zona(
-      this.prenotazioni.platea,
-      this.prenotazioni.platea.length,
-      this.prenotazioni.platea[0].length
-    );
+    this.platea = this.prenotazioni.platea;
     this.palco = this.prenotazioni.palco;
 
     console.log(this.platea);
