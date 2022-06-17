@@ -51,7 +51,6 @@ export class TeatroComponent implements OnInit {
         this.nuovaPrenotazione.posto
       ] = this.nomeDaInserire;
     }
-    console.log(this.teatro.prenotazioni);
   }
 
   //@Output in pulsante: click del pulsante x vedere il nome + genera la prenotazione
