@@ -22,6 +22,7 @@ export class PulsanteComponent implements OnInit {
     try {
       if (this.evidenzia == true) {
         this.evidenzia = false;
+        console.log(this.evidenzia);
       }
       this.evidenzia = true;
 
@@ -34,6 +35,8 @@ export class PulsanteComponent implements OnInit {
   stile() {
     if (this.evidenzia == true) {
       return { 'background-color': 'green' };
+    } else if (this.evidenzia == false) {
+      return { 'background-color': 'turquoise' };
     }
     return { 'background-color': this.nomePosto != 'x' ? 'red' : 'turquoise' };
   }
