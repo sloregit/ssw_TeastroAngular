@@ -6,6 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { Pulsante } from '../teatro/teatro.component';
 
 @Component({
   selector: 'app-pulsante',
@@ -13,6 +14,7 @@ import {
   styleUrls: ['./pulsante.component.css'],
 })
 export class PulsanteComponent implements OnInit {
+  @Input() pulsanteIdentity: Pulsante;
   @Input() etichetta: string;
   @Input() nome: string;
   @Output() mostraNomeEmitter = new EventEmitter<object>();
@@ -36,6 +38,7 @@ export class PulsanteComponent implements OnInit {
   }
   constructor() {}
   ngOnInit() {
-    console.log('funziono');
+    console.log('pulsante');
+    console.log(this.pulsanteIdentity);
   }
 }

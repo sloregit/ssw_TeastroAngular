@@ -16,6 +16,9 @@
         (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
         [nome]="persona"
         [etichetta]="'P' + posto"
+        [pulsanteIdentity]="
+          pulsante('P' + posto, persona, 'platea', fila, posto)
+        "
       ></app-pulsante>
     </span>
   </div>
