@@ -14,7 +14,7 @@ import {
 })
 export class PulsanteComponent implements OnInit {
   @Input() etichetta: string;
-  @Input() nome: string;
+  @Input() nomePosto: string;
   @Output() mostraNomeEmitter = new EventEmitter<object>();
   evidenzia: boolean;
   //invia al parent i dati del pulsante cliccato(this)
@@ -32,7 +32,7 @@ export class PulsanteComponent implements OnInit {
       this.evidenzia = false;
       return { 'background-color': 'green' };
     }
-    return { 'background-color': this.nome != 'x' ? 'red' : 'turquoise' };
+    return { 'background-color': this.nomePosto != 'x' ? 'red' : 'turquoise' };
   }
   constructor() {}
   ngOnInit() {}

@@ -20,11 +20,15 @@ export class Teatro {
 export class AppComponent {
   title: string = 'Consulta la disponibilità';
   teatro: Teatro;
+  nomePrenotazione: string;
   prenotazioni: string;
   constructor(private AppDBservice: AppDBService) {}
+
   @Output() passaNomeEmitter = new EventEmitter();
   passaNome($event) {
-    this.passaNomeEmitter.emit($event.target.value.toString());
+    this.nomePrenotazione = $event.target.value;
+    console.log(this.nomePrenotazione);
+    //this.passaNomeEmitter.emit($event.target.value.toString());
   }
   //@Output in TeatroComponent
   clean(teatro: undefined) {
