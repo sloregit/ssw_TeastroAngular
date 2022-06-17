@@ -41,16 +41,10 @@ export class TeatroComponent implements OnInit {
   evidenzia: boolean;
   pulsante;
   @Input() teatro: Teatro;
-  constructor() {
-    this.pulsante = new Pulsante(
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      undefined
-    );
+  constructor() {}
+  generaPulsanti(etichetta, nome, zona, fila, posto) {
+    return new Pulsante(etichetta, nome, zona, fila, posto);
   }
-
   //torna alla pagina iniziale visualizzataSE(ngIf prenotazioni != undefined)
   @Output() eliminaTeatroEmitter = new EventEmitter();
   eliminaTeatro() {
