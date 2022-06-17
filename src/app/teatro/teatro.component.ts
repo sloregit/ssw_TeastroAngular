@@ -11,20 +11,6 @@ export class Prenotazione {
     this.posto = posto;
   }
 }
-export class Pulsante {
-  etichetta: string;
-  nome: string;
-  zona: string;
-  fila: number;
-  posto: number;
-  constructor(etichetta, nome, zona, fila, posto) {
-    this.etichetta = etichetta;
-    this.nome = nome;
-    this.zona = zona;
-    this.fila = fila;
-    this.posto = posto;
-  }
-}
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
@@ -39,12 +25,8 @@ export class TeatroComponent implements OnInit {
   nomeDaInserire: string;
   nuovaPrenotazione: Prenotazione;
   evidenzia: boolean;
-  pulsante;
   @Input() teatro: Teatro;
   constructor() {}
-  generaPulsanti(etichetta, nome, zona, fila, posto) {
-    return new Pulsante(etichetta, nome, zona, fila, posto);
-  }
   //torna alla pagina iniziale visualizzataSE(ngIf prenotazioni != undefined)
   @Output() eliminaTeatroEmitter = new EventEmitter();
   eliminaTeatro() {
