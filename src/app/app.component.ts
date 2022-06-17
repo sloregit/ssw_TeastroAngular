@@ -1,4 +1,4 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, VERSION, Input, Output, EventEmitter } from '@angular/core';
 import { AppDBService } from './app-db.service';
 
 export class Teatro {
@@ -22,7 +22,10 @@ export class AppComponent {
   teatro: Teatro;
   prenotazioni: string;
   constructor(private AppDBservice: AppDBService) {}
-
+  @Output() passaNomeEmitter = new EventEmitter();
+  passaNome($event) {
+    this.passaNomeEmitter.emit($event.target.value.toString());
+  }
   //@Output in TeatroComponent
   clean(teatro: undefined) {
     this.teatro = teatro;
