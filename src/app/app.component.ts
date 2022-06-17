@@ -24,7 +24,6 @@ export class AppComponent {
   prenotazioni: string;
   constructor(private AppDBservice: AppDBService) {}
 
-  @Output() passaNomeEmitter = new EventEmitter();
   passaNome($event) {
     this.nomePrenotazione = $event.target.value;
     console.log(this.nomePrenotazione);
