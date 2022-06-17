@@ -60,15 +60,11 @@ export class TeatroComponent implements OnInit {
       this.nome = $event.nome;
     }
     this.nuovaPrenotazione = new Prenotazione(zona, fila, posto);
-    console.log(this.nuovaPrenotazione);
   }
   //invocata dopo la generazione del component
   //this.prenotazioni sarà pronto quando OnInit è invocata
   ngOnInit() {
     this.platea = this.teatro.platea;
     this.palco = this.teatro.palco;
-
-    console.log('teatroComponent');
-    console.log(this.teatro);
   }
 }
