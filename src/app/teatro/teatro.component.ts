@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Teatro } from '../app.component';
 
 export class Prenotazione {
   zona: string;
@@ -26,9 +26,8 @@ export class TeatroComponent implements OnInit {
   nomeDaInserire: string;
   nuovaPrenotazione: Prenotazione;
   evidenzia: boolean;
-  constructor() {
-    console.log(typeof this.prenotazioni);
-  }
+  @Input() teatro: Teatro;
+  constructor() {}
 
   //torna alla pagina iniziale visualizzataSE(ngIf prenotazioni != undefined)
   @Output() eliminaTeatroEmitter = new EventEmitter();
@@ -67,11 +66,12 @@ export class TeatroComponent implements OnInit {
     console.log(this.nuovaPrenotazione);
   }
   //invocata dopo la generazione del component
-  //this.prenotazioni è async, sarà pronto quando OnInit è invocata
+  //this.prenotazioni sarà pronto quando OnInit è invocata
   ngOnInit() {
-    this.platea = this.prenotazioni.platea;
-    this.palco = this.prenotazioni.palco;
+    this.platea = this.teatro.platea;
+    this.palco = this.teatro.palco;
 
-    console.log(typeof this.prenotazioni);
+    console.log('teatroComponent');
+    console.log(this.teatro);
   }
 }

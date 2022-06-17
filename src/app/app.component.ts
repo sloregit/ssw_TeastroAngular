@@ -1,8 +1,17 @@
 import { Component, VERSION } from '@angular/core';
 import { AppDBService } from './app-db.service';
-import { TeatroComponent } from './teatro/teatro.component';
-import { Observable, of, map } from 'rxjs';
- 
+
+export class Teatro {
+  prenotazioni;
+  platea;
+  palco;
+  constructor(prenotazioni: string) {
+    this.prenotazioni = prenotazioni;
+    this.platea = this.prenotazioni.platea;
+    this.palco = this.prenotazioni.palco;
+  }
+}
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -10,7 +19,8 @@ import { Observable, of, map } from 'rxjs';
 })
 export class AppComponent {
   title: string = 'Consulta la disponibilità';
-  prenotazioni: Observable<string>;
+  teatro: Teatro;
+  prenotazioni: string;
   constructor(private AppDBservice: AppDBService) {}
 
   //@Output in TeatroComponent
@@ -20,8 +30,9 @@ export class AppComponent {
   //get dati + invio a teatroComponent
   mostraTeatro() {
     this.AppDBservice.getPrenotazioni$().subscribe({
-      next: (res) => {
-        this.prenotazioni = of(JSON.parse(res));
+      next: (res: string) => {
+        this.prenotazioni = JSON.parse(res);
+        this.teatro = new Teatro(this.prenotazioni);
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),
