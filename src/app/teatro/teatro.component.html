@@ -9,25 +9,26 @@
 >
   {{ nome }}
 </p>
-<div *ngFor="let prenotazioni of teatro.platea; let fila = index">
-  <span *ngFor="let persona of prenotazioni; let posto = index">
-    <app-pulsante
-      (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
-      [nome]="persona"
-      [etichetta]="'P' + posto"
-    ></app-pulsante>
-  </span>
-</div>
-<br />
-<div *ngFor="let prenotazioni of teatro.palco; let fila = index">
-  <span *ngFor="let persona of prenotazioni; let posto = index">
-    <app-pulsante
-      (mostraNomeEmitter)="mostraPrenotazione($event, 'palco', fila, posto)"
-      [nome]="persona"
-      [etichetta]="'P' + posto"
-    ></app-pulsante>
-  </span>
-
+<div *ngIf="teatro !== undefined">
+  <div *ngFor="let prenotazioni of teatro.platea; let fila = index">
+    <span *ngFor="let persona of prenotazioni; let posto = index">
+      <app-pulsante
+        (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
+        [nome]="persona"
+        [etichetta]="'P' + posto"
+      ></app-pulsante>
+    </span>
+  </div>
+  <br />
+  <div *ngFor="let prenotazioni of teatro.palco; let fila = index">
+    <span *ngFor="let persona of prenotazioni; let posto = index">
+      <app-pulsante
+        (mostraNomeEmitter)="mostraPrenotazione($event, 'palco', fila, posto)"
+        [nome]="persona"
+        [etichetta]="'P' + posto"
+      ></app-pulsante>
+    </span>
+  </div>
   <br />
   <div>
     <button (click)="eliminaTeatro()">indietro</button>
