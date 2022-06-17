@@ -41,15 +41,19 @@ export class TeatroComponent implements OnInit {
   //pulsante Conferma
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
-    //a seconda della zona
-    if (this.nuovaPrenotazione.zona === 'platea') {
-      this.teatro.platea[this.nuovaPrenotazione.fila][
-        this.nuovaPrenotazione.posto
-      ] = this.nomeDaInserire;
-    } else if (this.nuovaPrenotazione.zona === 'palco') {
-      this.teatro.palco[this.nuovaPrenotazione.fila][
-        this.nuovaPrenotazione.posto
-      ] = this.nomeDaInserire;
+    if (this.nome === 'x') {
+      //a seconda della zona
+      if (this.nuovaPrenotazione.zona === 'platea') {
+        this.teatro.platea[this.nuovaPrenotazione.fila][
+          this.nuovaPrenotazione.posto
+        ] = this.nomeDaInserire;
+      } else if (this.nuovaPrenotazione.zona === 'palco') {
+        this.teatro.palco[this.nuovaPrenotazione.fila][
+          this.nuovaPrenotazione.posto
+        ] = this.nomeDaInserire;
+      }
+    } else {
+      console.log('posto prenotato');
     }
   }
 
