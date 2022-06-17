@@ -17,6 +17,7 @@ export class PulsanteComponent implements OnInit {
   @Input() nomePosto: string;
   @Output() mostraNomeEmitter = new EventEmitter<object>();
   evidenzia: boolean;
+  selezionati = [];
   //invia al parent i dati del pulsante cliccato(this)
   //possono esser selezionati più posti
   c() {
@@ -30,9 +31,10 @@ export class PulsanteComponent implements OnInit {
         this.evidenzia = false;
       } else {
         this.evidenzia = true;
+        this.selezionati.push(this);
       }
+      console.log(this.selezionati);
       this.mostraNomeEmitter.emit(this);
-      this.mostraNomeEmitter.subscribe((val) => console.log(val));
     } catch (e: any) {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);
     }
