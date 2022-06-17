@@ -10,7 +10,7 @@
   {{ nome }}
 </p>
 <div *ngIf="prenotazioni != undefined">
-  <div id="platea_div" *ngFor="let prenotazioni of platea; let fila = index">
+  <div *ngFor="let prenotazioni of platea; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
         (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
@@ -20,7 +20,7 @@
     </span>
   </div>
   <br />
-  <div id="platea_div" *ngFor="let prenotazioni of palco; let fila = index">
+  <div *ngFor="let prenotazioni of palco; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
         (mostraNomeEmitter)="mostraPrenotazione($event, 'palco', fila, posto)"
