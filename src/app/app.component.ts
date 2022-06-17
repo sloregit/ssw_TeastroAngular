@@ -27,7 +27,7 @@ export class AppComponent {
   clean(teatro: undefined) {
     this.teatro = teatro;
   }
-  //get dati + invio a teatroComponent
+  //get dati + invio oggetto Teatro a teatroComponent
   mostraTeatro() {
     this.AppDBservice.getPrenotazioni$().subscribe({
       next: (res: string) => {
