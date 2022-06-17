@@ -55,6 +55,7 @@ export class TeatroComponent implements OnInit {
   //@Output in pulsante: click del pulsante x vedere il nome + genera la prenotazione
   mostraPrenotazione($event, zona: string, fila: number, posto: number) {
     this.nomePosto = $event.nome;
+    console.log($event.nome);
     if ($event.nome != 'x') {
       alert('Il posto è già prenotato');
     }
