@@ -24,8 +24,8 @@ export class AppComponent {
   constructor(private AppDBservice: AppDBService) {}
 
   //@Output in TeatroComponent
-  clean(prenotazioni: undefined) {
-    this.prenotazioni = prenotazioni;
+  clean(teatro: undefined) {
+    this.teatro = teatro;
   }
   //get dati + invio a teatroComponent
   mostraTeatro() {

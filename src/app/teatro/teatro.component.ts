@@ -27,13 +27,17 @@ export class TeatroComponent implements OnInit {
   nuovaPrenotazione: Prenotazione;
   evidenzia: boolean;
   @Input() teatro: Teatro;
-  constructor() {}
+  constructor() {
+    console.log('teatroConstructor');
+
+    console.log(this.teatro);
+  }
 
   //torna alla pagina iniziale visualizzataSE(ngIf prenotazioni != undefined)
   @Output() eliminaTeatroEmitter = new EventEmitter();
   eliminaTeatro() {
-    this.prenotazioni = undefined;
-    this.eliminaTeatroEmitter.emit(this.prenotazioni);
+    this.teatro = undefined;
+    this.eliminaTeatroEmitter.emit(this.teatro);
   }
 
   //@output in "InserimentoComponent" nomeDaInserire = input utente
@@ -46,15 +50,15 @@ export class TeatroComponent implements OnInit {
   prenota() {
     //a seconda della zona
     if (this.nuovaPrenotazione.zona === 'platea') {
-      this.prenotazioni.platea[this.nuovaPrenotazione.fila][
+      this.teatro.platea[this.nuovaPrenotazione.fila][
         this.nuovaPrenotazione.posto
       ] = this.nomeDaInserire;
     } else if (this.nuovaPrenotazione.zona === 'palco') {
-      this.prenotazioni.palco[this.nuovaPrenotazione.fila][
+      this.teatro.palco[this.nuovaPrenotazione.fila][
         this.nuovaPrenotazione.posto
       ] = this.nomeDaInserire;
     }
-    console.log(this.prenotazioni);
+    console.log(this.teatro.prenotazioni);
   }
 
   //@Output in pulsante: click del pulsante x vedere il nome + genera la prenotazione

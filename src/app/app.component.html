@@ -1,12 +1,10 @@
-<div *ngIf="prenotazioni === undefined">
+<div *ngIf="teatro === undefined">
   <h3>{{ title }}</h3>
   <button (click)="mostraTeatro()">Vai</button><br />
-  <p>{{ prenotazioni }}</p>
 </div>
-<div *ngIf="prenotazioni != undefined">
+<div *ngIf="teatro != undefined">
   <app-teatro
     [teatro]="teatro"
-    [prenotazioni]="prenotazioni"
     (eliminaTeatroEmitter)="clean($event)"
   ></app-teatro>
 </div>

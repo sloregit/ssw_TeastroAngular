@@ -12,7 +12,7 @@ import {
   templateUrl: './pulsante.component.html',
   styleUrls: ['./pulsante.component.css'],
 })
-export class PulsanteComponent {
+export class PulsanteComponent implements OnInit {
   @Input() etichetta: string;
   @Input() nome: string;
   @Output() mostraNomeEmitter = new EventEmitter<object>();
@@ -35,4 +35,7 @@ export class PulsanteComponent {
     return { 'background-color': this.nome != 'x' ? 'red' : 'turquoise' };
   }
   constructor() {}
+  ngOnInit() {
+    console.log('funziono');
+  }
 }
