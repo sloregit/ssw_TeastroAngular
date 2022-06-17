@@ -23,8 +23,10 @@ export class PulsanteComponent implements OnInit {
       if (this.evidenzia == true) {
         this.evidenzia = false;
         console.log(this.evidenzia);
+      } else {
+        this.evidenzia = true;
       }
-      this.evidenzia = true;
+      console.log(this.evidenzia);
 
       this.mostraNomeEmitter.emit(this);
     } catch (e: any) {
