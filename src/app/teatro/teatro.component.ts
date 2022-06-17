@@ -2,10 +2,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Teatro } from '../app.component';
 
 export class Prenotazione {
+  nome: string;
   zona: string;
   fila: number;
   posto: number;
-  constructor(zona: string, fila: number, posto: number) {
+  constructor(nome: string, zona: string, fila: number, posto: number) {
+    this.nome = nome;
     this.zona = zona;
     this.fila = fila;
     this.posto = posto;
@@ -22,6 +24,7 @@ export class TeatroComponent implements OnInit {
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   nomePosto: string;
+  prenotaMultipla: Array<Prenotazione> = [];
   @Input() nomePrenotazione: string;
   nuovaPrenotazione: Prenotazione;
   evidenzia: boolean;
@@ -59,7 +62,14 @@ export class TeatroComponent implements OnInit {
     if ($event.nomePosto != 'x') {
       alert('Il posto è già prenotato');
     }
-    this.nuovaPrenotazione = new Prenotazione(zona, fila, posto);
+    this.nuovaPrenotazione = new Prenotazione(
+      $event.nomePosto,
+      zona,
+      fila,
+      posto
+    );
+    this.prenotaMultipla.push(this.nuovaPrenotazione);
+    console.log(this.prenotaMultipla);
   }
   //invocata dopo la generazione del component
   //this.prenotazioni sarà pronto quando OnInit è invocata

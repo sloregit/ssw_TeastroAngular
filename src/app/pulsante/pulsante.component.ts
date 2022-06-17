@@ -18,6 +18,7 @@ export class PulsanteComponent implements OnInit {
   @Output() mostraNomeEmitter = new EventEmitter<object>();
   evidenzia: boolean;
   //invia al parent i dati del pulsante cliccato(this)
+  //possono esser selezionati più posti
   mostraNome() {
     try {
       if (this.evidenzia == true) {
