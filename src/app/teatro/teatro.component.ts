@@ -18,14 +18,13 @@ export class Prenotazione {
 })
 export class TeatroComponent implements OnInit {
   title: string = 'Inserisci il nome, seleziona il posto e premi conferma';
-  @Input() prenotazioni;
+  @Input() teatro: Teatro;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   nome: string;
   nomeDaInserire: string;
   nuovaPrenotazione: Prenotazione;
   evidenzia: boolean;
-  @Input() teatro: Teatro;
   constructor() {}
   //torna alla pagina iniziale visualizzataSE(ngIf prenotazioni != undefined)
   @Output() eliminaTeatroEmitter = new EventEmitter();
