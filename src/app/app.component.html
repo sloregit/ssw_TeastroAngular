@@ -2,7 +2,7 @@
   <h3>{{ title }}</h3>
   <button (click)="mostraTeatro()">Vai</button><br />
 </div>
-<div *ngIf="teatro != undefined">
+<div *ngIf="teatro !== undefined">
   <app-teatro
     [teatro]="teatro"
     (eliminaTeatroEmitter)="clean($event)"
