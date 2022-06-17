@@ -19,17 +19,20 @@ export class PulsanteComponent implements OnInit {
   evidenzia: boolean;
   //invia al parent i dati del pulsante cliccato(this)
   //possono esser selezionati più posti
+  c() {
+    console.log('c');
+
+    console.log(this);
+  }
   mostraNome() {
     try {
       if (this.evidenzia == true) {
         this.evidenzia = false;
-        console.log(this.evidenzia);
       } else {
         this.evidenzia = true;
       }
-      console.log(this.evidenzia);
-
       this.mostraNomeEmitter.emit(this);
+      this.mostraNomeEmitter.subscribe((val) => console.log(val));
     } catch (e: any) {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);
     }

@@ -1,3 +1,8 @@
-<button [ngStyle]="stile()" class="pulsante" (click)="mostraNome()">
+<button
+  [ngStyle]="stile()"
+  class="pulsante"
+  (click)="mostraNome()"
+  (onChange)="c()"
+>
   {{ nomePosto }}
 </button>
