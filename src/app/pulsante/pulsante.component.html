@@ -1,9 +1,10 @@
 <button
   (click)="mostraNome()"
-  [ngClass]="evidenzia === true ? 'selezionato' : 'nonSelezionato'"
   [ngStyle]="{
     'background-color': this.nomePosto != 'x' ? 'red' : 'turquoise'
   }"
+  [ngClass]="evidenzia === true ? 'selezionato' : 'nonSelezionato'"
+  [ngClass]="nomePosto !== 'x' ? 'prenotato' : 'nonPrenotato'"
 >
   {{ nomePosto }}
 </button>

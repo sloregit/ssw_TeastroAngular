@@ -4,3 +4,9 @@
 .nonSelezionato {
   background-color: turquoise;
 }
+.prenotato {
+  background-color: red;
+}
+.libero {
+  background-color: turquoise;
+}
