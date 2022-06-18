@@ -39,8 +39,8 @@ export class PrenotazioneMultipla {
   styleUrls: ['./teatro.component.css'],
 })
 export class TeatroComponent implements OnInit {
-  title: string = 'Seleziona il posto e premi conferma';
-  title2: string = 'seleziona un posto e sarà tuo';
+  title: string = 'Seleziona i posti e premi conferma';
+  title2: string = 'Clicca sul posto per prenotare';
   @Input() teatro: Teatro;
   @Input() nomePrenotazione: string;
   @Output() inviaPrenotazioniEmitter = new EventEmitter();

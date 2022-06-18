@@ -1,5 +1,10 @@
-<h3 *ngIf="!rapido">{{ title }}</h3>
-<p *ngIf="rapido">Ciao {{ nomePrenotazione }},{{ title2 }}</p>
+<h3>Benvenuto {{ nomePrenotazione }}</h3>
+<p *ngIf="!rapido">
+  {{ title }}
+</p>
+<p *ngIf="rapido">
+  {{ title2 }}
+</p>
 <p
   *ngIf="!rapido"
   [ngStyle]="{ height: '20px', width: '50%', border: '0.5px dashed black' }"
