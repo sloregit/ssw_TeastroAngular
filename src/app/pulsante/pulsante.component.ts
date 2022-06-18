@@ -16,7 +16,7 @@ export class PulsanteComponent implements OnInit {
   @Input() etichetta: string;
   @Input() nomePosto: string;
   @Output() mostraNomeEmitter = new EventEmitter<object>();
-  evidenzia: boolean;
+  evidenzia: boolean = false;
   selezionati = [];
   a;
   //invia al parent i dati del pulsante cliccato(this)
