@@ -55,6 +55,14 @@ export class AppComponent {
       next: (val) => console.log(val),
     });
   }
+  resetPrenotazioni() {
+    const prenotazioni: Array<any> = new Array(
+      new Array<string>(10),
+      new Array<string>(4)
+    );
+    console.log();
+    //let TeatroVuoto = new Teatro();
+  }
 }
 /**
  return this.http.post<string>(
