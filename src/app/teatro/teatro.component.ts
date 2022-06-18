@@ -14,27 +14,21 @@ export class Prenotazione {
   }
 }
 //Per la prenotazioni multiple
-//aggiunge le prenotazioni se il pulsante è selezionato
-//la elimina altrimenti
+//aggiunge le prenotazioni se il pulsante è selezionato, la elimina altrimenti
 export class PrenotazioneMultipla {
   selezionati: Array<Prenotazione>;
   constructor() {
-    this.selezionati = [];
+    this.selezionati = new Array();
   }
   aggiungi(prenotazione: Prenotazione) {
     this.selezionati.push(prenotazione);
-    console.log(prenotazione);
-
-    console.log(this.selezionati);
   }
   rimuovi(fila: number, posto: number) {
     this.selezionati.map((old, i) => {
       if (old.fila === fila && old.posto === posto) {
-        console.log('rimosso fila: ' + fila + ' posto ' + posto);
         this.selezionati.splice(i, 1);
       }
     });
-    console.log(this.selezionati);
   }
 }
 
@@ -65,6 +59,8 @@ export class TeatroComponent implements OnInit {
   //pulsante Conferma
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
+    if (!this.rapido) {
+    }
     if (this.nomePosto === 'x') {
       //a seconda della zona
       if (this.nuovaPrenotazione.zona === 'platea') {
