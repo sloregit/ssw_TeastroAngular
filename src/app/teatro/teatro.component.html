@@ -13,7 +13,7 @@
         [rapido]="rapido"
         (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
         [nomePosto]="persona"
-        [etichetta]="'P' + fila + posto"
+        [etichetta]="'P' + posto"
         [prenotato]="prenotato"
       ></app-pulsante>
     </span>
@@ -25,7 +25,7 @@
         [rapido]="rapido"
         (mostraNomeEmitter)="mostraPrenotazione($event, 'palco', fila, posto)"
         [nomePosto]="persona"
-        [etichetta]="'P' + fila + posto"
+        [etichetta]="'P' + posto"
         [prenotato]="prenotato"
       ></app-pulsante>
     </span>
