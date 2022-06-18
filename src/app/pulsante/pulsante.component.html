@@ -1,3 +1,7 @@
-<button [ngStyle]="stile()" class="pulsante" (click)="mostraNome()">
+<button
+  [ngStyle]="stile()"
+  [ngClass]="evidenzia === ' true' ? selezionato : non"
+  (click)="mostraNome()"
+>
   {{ nomePosto }}
 </button>

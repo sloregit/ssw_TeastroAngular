@@ -13,6 +13,19 @@ export class Prenotazione {
     this.posto = posto;
   }
 }
+
+export class PrenotazioneMultipla {
+  selezionati: Array<Prenotazione>;
+  constructor() {}
+  aggiungi(prenotazione: Prenotazione) {
+    this.selezionati.push(prenotazione) ;
+  }
+  rimuovi(prenotazione: Prenotazione) {
+    for(let elem in this.selezionati){
+      
+    }
+  }
+}
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
@@ -35,10 +48,7 @@ export class TeatroComponent implements OnInit {
     this.teatro = undefined;
     this.eliminaTeatroEmitter.emit(this.teatro);
   }
-  b() {
-    console.log('b');
-    console.log(this);
-  }
+
   //pulsante Conferma
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
