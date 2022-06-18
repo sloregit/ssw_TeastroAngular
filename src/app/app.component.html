@@ -6,7 +6,11 @@
     (keyup)="passaNome($event)"
     placeholder="il tuo nome?"
   />
-  <button (click)="mostraTeatro()">Vai</button><br />
+  <br />
+  <span>
+    <button (click)="mostraTeatro(false)">Prenota</button><br />
+    <button (click)="mostraTeatro(true)">Prenotazione rapida</button>
+  </span>
 </div>
 <div *ngIf="teatro !== undefined">
   <app-teatro

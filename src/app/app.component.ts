@@ -1,14 +1,21 @@
 import { Component, VERSION, Input, Output, EventEmitter } from '@angular/core';
 import { AppDBService } from './app-db.service';
 
+export interface Prenotazioni {
+  platea: Array<Array<string>>;
+  palco: Array<Array<string>>;
+}
 export class Teatro {
   prenotazioni;
   platea;
   palco;
-  constructor(prenotazioni: string) {
+  rapido;
+  constructor(prenotazioni: string, rapido: boolean) {
+    console.log(typeof prenotazioni);
     this.prenotazioni = prenotazioni;
     this.platea = this.prenotazioni.platea;
     this.palco = this.prenotazioni.palco;
+    this.rapido = rapido;
   }
 }
 
@@ -34,11 +41,11 @@ export class AppComponent {
     this.teatro = teatro;
   }
   //get dati + invio oggetto Teatro a teatroComponent
-  mostraTeatro() {
+  mostraTeatro(rapido: boolean) {
     this.AppDBservice.getPrenotazioni$().subscribe({
       next: (res: string) => {
         this.prenotazioni = JSON.parse(res);
-        this.teatro = new Teatro(this.prenotazioni);
+        this.teatro = new Teatro(this.prenotazioni, rapido);
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),

@@ -13,18 +13,9 @@ export class Prenotazione {
     this.posto = posto;
   }
 }
-/*
-PrenotazioneMultipla {selezionati: Array[2]}
-selezionati: Array[2]
-0: Prenotazione
-fila: 3
-nome: "x"
-posto: 3
-zona: "platea"
-__proto__: Prenotazione
-1: Prenotazione
-__proto__: PrenotazioneMultipla
- */
+//Per la prenotazioni multiple
+//aggiunge le prenotazioni se il pulsante è selezionato
+//la elimina altrimenti
 export class PrenotazioneMultipla {
   selezionati: Array<Prenotazione>;
   constructor() {
@@ -32,19 +23,21 @@ export class PrenotazioneMultipla {
   }
   aggiungi(prenotazione: Prenotazione) {
     this.selezionati.push(prenotazione);
-    console.log('aggiunto: ' + prenotazione);
+    console.log(prenotazione);
+
     console.log(this.selezionati);
   }
-  rimuovi(prenotazione: Prenotazione) {
+  rimuovi(fila: number, posto: number) {
     this.selezionati.map((old, i) => {
-      if (old.fila === prenotazione.fila && old.posto === prenotazione.posto) {
+      if (old.fila === fila && old.posto === posto) {
+        console.log('rimosso fila: ' + fila + ' posto ' + posto);
         this.selezionati.splice(i, 1);
-        console.log('rimosso: ' + this.selezionati[i]);
       }
     });
     console.log(this.selezionati);
   }
 }
+
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
@@ -55,11 +48,12 @@ export class TeatroComponent implements OnInit {
   @Input() teatro: Teatro;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
+  rapido: boolean;
   nomePosto: string;
+  evidenzia: boolean;
   prenotaMultipla: PrenotazioneMultipla = new PrenotazioneMultipla();
   @Input() nomePrenotazione: string;
   nuovaPrenotazione: Prenotazione;
-  evidenzia: boolean;
   constructor() {}
   //torna alla pagina iniziale visualizzataSE(ngIf prenotazioni != undefined)
   @Output() eliminaTeatroEmitter = new EventEmitter();
@@ -103,7 +97,7 @@ export class TeatroComponent implements OnInit {
       );
       this.prenotaMultipla.aggiungi(this.nuovaPrenotazione);
     } else {
-      this.prenotaMultipla.rimuovi(this.nuovaPrenotazione);
+      this.prenotaMultipla.rimuovi(fila, posto);
     }
   }
   //invocata dopo la generazione del component
@@ -111,5 +105,7 @@ export class TeatroComponent implements OnInit {
   ngOnInit() {
     this.platea = this.teatro.platea;
     this.palco = this.teatro.palco;
+    this.rapido = this.teatro.rapido;
+    console.log(this.rapido);
   }
 }
