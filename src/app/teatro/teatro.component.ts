@@ -40,9 +40,10 @@ export class PrenotazioneMultipla {
 })
 export class TeatroComponent implements OnInit {
   title: string = 'Seleziona il posto e premi conferma';
-  title2: string = 'Seleziona per prenotare';
+  title2: string = 'seleziona un posto e sarà tuo';
   @Input() teatro: Teatro;
   @Input() nomePrenotazione: string;
+  @Output() inviaPrenotazioniEmitter = new EventEmitter();
   rapido: boolean;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
@@ -70,6 +71,7 @@ export class TeatroComponent implements OnInit {
           ] = this.nomePrenotazione)
       );
       this.prenotato = true;
+      this.inviaPrenotazioniEmitter.emit(this.teatro);
     }
   }
 
@@ -92,6 +94,7 @@ export class TeatroComponent implements OnInit {
           this.nuovaPrenotazione.posto
         ] = this.nomePrenotazione;
         this.prenotato = true;
+        this.inviaPrenotazioniEmitter.emit(this.teatro);
       }
       //modalità ordinaria => clicco e lo aggiungo alle prenotazioni
       if (!this.rapido) {

@@ -1,8 +1,7 @@
 <h3 *ngIf="!rapido">{{ title }}</h3>
-<h3 *ngIf="rapido">{{ title2 }}</h3>
-<p>{{ nomePrenotazione }}</p>
+<p *ngIf="rapido">Ciao {{ nomePrenotazione }},{{ title2 }}</p>
 <p
-  #show
+  *ngIf="!rapido"
   [ngStyle]="{ height: '20px', width: '50%', border: '0.5px dashed black' }"
 >
   {{ nomePosto }}

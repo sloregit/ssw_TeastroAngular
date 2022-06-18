@@ -50,4 +50,7 @@ export class AppComponent {
         console.error('Observer got an error: ' + JSON.stringify(err)),
     });
   }
+  aggiornaPrenotazioni($event) {
+    console.log($event);
+  }
 }
