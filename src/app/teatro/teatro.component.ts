@@ -62,8 +62,12 @@ export class TeatroComponent implements OnInit {
     if (!this.rapido) {
       console.log(this.prenotaMultipla);
       this.prenotaMultipla.selezionati.map(
-        (prenotazione) => (prenotazione.nome = this.nomePrenotazione)
+        (prenotazione) =>
+          (this.teatro[prenotazione.zona][prenotazione.fila][
+            prenotazione.posto
+          ] = this.nomePrenotazione)
       );
+      this.prenotaMultipla = undefined;
     }
   }
 
