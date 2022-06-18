@@ -10,12 +10,9 @@
   <div *ngFor="let prenotazioni of teatro.platea; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
-        (mostraNomeEmitter)="
-          mostraPrenotazione($event, 'platea', fila, posto, evidenzia)
-        "
+        (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
         [nomePosto]="persona"
         [etichetta]="'P' + posto"
-        [ngClass]="evidenzia === true ? 'selezionato' : 'nonSelezionato'"
       ></app-pulsante>
     </span>
   </div>
@@ -23,12 +20,9 @@
   <div *ngFor="let prenotazioni of teatro.palco; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
-        (mostraNomeEmitter)="
-          mostraPrenotazione($event, 'palco', fila, posto, evidenzia)
-        "
+        (mostraNomeEmitter)="mostraPrenotazione($event, 'palco', fila, posto)"
         [nomePosto]="persona"
         [etichetta]="'P' + posto"
-        [ngClass]="evidenzia === true ? 'selezionato' : 'nonSelezionato'"
       ></app-pulsante>
     </span>
   </div>

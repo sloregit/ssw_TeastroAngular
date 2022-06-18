@@ -1,6 +1,7 @@
 <button
   (click)="mostraNome()"
   [ngClass]="nomePosto !== 'x' ? 'prenotato' : 'libero'"
+  [ngClass]="evidenzia === true ? 'selezionato' : 'nonSelezionato'"
 >
   {{ nomePosto }}
 </button>
