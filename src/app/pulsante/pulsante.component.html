@@ -12,4 +12,6 @@
   *ngIf="rapido"
   (click)="prenotaVeloce()"
   [ngClass]="nomePosto !== 'x' ? 'prenotato' : 'libero'"
-></button>
+>
+  {{ nomePosto }}
+</button>
