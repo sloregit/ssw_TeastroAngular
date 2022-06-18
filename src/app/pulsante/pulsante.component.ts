@@ -18,10 +18,12 @@ export class PulsanteComponent implements OnInit {
   //possono esser selezionati più posti
   mostraNome() {
     try {
-      if (this.evidenzia == true) {
-        this.evidenzia = false;
-      } else {
-        this.evidenzia = true;
+      if (!this.rapido) {
+        if (this.evidenzia == true) {
+          this.evidenzia = false;
+        } else {
+          this.evidenzia = true;
+        }
       }
       this.mostraNomeEmitter.emit(this);
     } catch (e: any) {

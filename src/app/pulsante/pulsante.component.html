@@ -1,7 +1,9 @@
 <button
   (click)="mostraNome()"
   [ngClass]="
-    evidenzia === true && nomePosto === 'x' ? 'selezionato' : 'nonSelezionato'
+    !rapido && evidenzia === true && nomePosto === 'x'
+      ? 'selezionato'
+      : 'nonSelezionato'
   "
   [ngClass]="nomePosto !== 'x' ? 'prenotato' : 'libero'"
 >
