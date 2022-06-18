@@ -40,6 +40,7 @@ export class PrenotazioneMultipla {
 })
 export class TeatroComponent implements OnInit {
   title: string = 'Seleziona il posto e premi conferma';
+  title2: string = 'Seleziona per prenotare';
   @Input() teatro: Teatro;
   @Input() nomePrenotazione: string;
   rapido: boolean;
@@ -79,10 +80,18 @@ export class TeatroComponent implements OnInit {
     //se il posto è libero
     if (this.nomePosto === 'x') {
       //modalità rapida => clicco e prenoto
-      if (this.rapido) {
+      if (this.rapido && !this.prenotato) {
+        this.nuovaPrenotazione = new Prenotazione(
+          this.nomePosto,
+          zona,
+          fila,
+          posto
+        );
+        console.log(this.nuovaPrenotazione);
         this.teatro[this.nuovaPrenotazione.zona][this.nuovaPrenotazione.fila][
           this.nuovaPrenotazione.posto
         ] = this.nomePrenotazione;
+        this.prenotato = true;
       }
       //modalità ordinaria => clicco e lo aggiungo alle prenotazioni
       if (!this.rapido) {
