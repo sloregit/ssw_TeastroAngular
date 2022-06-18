@@ -10,12 +10,9 @@ export class PulsanteComponent implements OnInit {
   @Input() nomePosto: string;
   @Input() rapido: boolean;
   @Output() mostraNomeEmitter = new EventEmitter<object>();
-  @Output() prenotaVeloceEmitter = new EventEmitter<object>();
   evidenzia: boolean = false;
-  selezionati = [];
-
   //invia al parent i dati del pulsante cliccato(this)
-  //possono esser selezionati più posti
+  //possono esser selezionati più posti in caso di prenotazione ordinaria
   mostraNome() {
     try {
       if (!this.rapido) {
@@ -30,9 +27,6 @@ export class PulsanteComponent implements OnInit {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);
     }
   }
-  //modifica lo stile dell'ultimo pulsante cliccato e dei posti prenotati
-  //  [ngStyle]="stile()"
-
   constructor() {}
   ngOnInit() {}
 }
