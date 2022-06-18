@@ -60,7 +60,7 @@ export class TeatroComponent implements OnInit {
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
     if (!this.rapido) {
-      
+      console.log(this.prenotaMultipla);
     }
   }
 
