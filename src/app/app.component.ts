@@ -29,6 +29,7 @@ export class AppComponent {
   nomePrenotazione: string;
   prenotazioni: string;
   prenotazioniOut: string;
+  conferma: string;
   constructor(private AppDBservice: AppDBService) {}
 
   passaNome($event) {
@@ -53,8 +54,9 @@ export class AppComponent {
   aggiornaPrenotazioni($event: Teatro) {
     this.prenotazioniOut = JSON.stringify($event.prenotazioni);
     this.AppDBservice.SetPrenotazioni$($event.prenotazioni).subscribe({
-      next: (val) => console.log(val),
+      next: (val) => (this.conferma = val),
     });
+    this.nomePrenotazione = undefined;
   }
   //Per praticità//////////////////da Eliminare
   resetPrenotazioni() {
@@ -78,8 +80,8 @@ export class AppComponent {
             })
         ),
     };
-    this.AppDBservice.SetPrenotazioni$(JSON.stringify(prenotazioni)).subscribe({
-      next: (val) => console.log(val),
-    });
+    this.AppDBservice.SetPrenotazioni$(JSON.stringify(prenotazioni)).subscribe(
+      (val) => (this.conferma = 'Teatro resettato')
+    );
   }
 }
