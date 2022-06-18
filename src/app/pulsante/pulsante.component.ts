@@ -22,6 +22,7 @@ export class PulsanteComponent implements OnInit {
   //possono esser selezionati più posti
   c() {
     console.log('c');
+    this.mostraNomeEmitter.emit(this);
 
     console.log(this);
   }
@@ -31,10 +32,7 @@ export class PulsanteComponent implements OnInit {
         this.evidenzia = false;
       } else {
         this.evidenzia = true;
-        this.selezionati.push(this);
       }
-      console.log(this.selezionati);
-      this.mostraNomeEmitter.emit(this);
     } catch (e: any) {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);
     }
