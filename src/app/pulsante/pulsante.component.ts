@@ -8,13 +8,21 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PulsanteComponent implements OnInit {
   @Input() etichetta: string;
   @Input() nomePosto: string;
+  @Input() rapido: boolean;
   @Output() mostraNomeEmitter = new EventEmitter<object>();
+  @Output() prenotaVeloceEmitter = new EventEmitter<object>();
   evidenzia: boolean = false;
   selezionati = [];
 
   //invia al parent i dati del pulsante cliccato(this)
+  prenotaVeloce() {
+    try {
+      this.prenotaVeloceEmitter.emit(this);
+    } catch (e) {
+      console.error('errore in Pulsante.prenotaveloce');
+    }
+  }
   //possono esser selezionati più posti
-
   mostraNome() {
     try {
       if (this.evidenzia == true) {

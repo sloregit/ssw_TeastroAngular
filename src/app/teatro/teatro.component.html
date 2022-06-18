@@ -10,7 +10,9 @@
   <div *ngFor="let prenotazioni of teatro.platea; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
+        [rapido]="rapido"
         (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
+        (prenotaVeloceEmitter)="prenota($event)"
         [nomePosto]="persona"
         [etichetta]="'P' + posto"
       ></app-pulsante>
@@ -20,7 +22,9 @@
   <div *ngFor="let prenotazioni of teatro.palco; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
       <app-pulsante
+        [rapido]="rapido"
         (mostraNomeEmitter)="mostraPrenotazione($event, 'palco', fila, posto)"
+        (prenotaVeloceEmitter)="prenota($event)"
         [nomePosto]="persona"
         [etichetta]="'P' + posto"
       ></app-pulsante>

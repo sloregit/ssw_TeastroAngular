@@ -1,4 +1,5 @@
 <button
+  *ngIf="!rapido"
   (click)="mostraNome()"
   [ngClass]="
     evidenzia === true && nomePosto === 'x' ? 'selezionato' : 'nonSelezionato'
@@ -7,3 +8,8 @@
 >
   {{ nomePosto }}
 </button>
+<button
+  *ngIf="rapido"
+  (click)="prenotaVeloce()"
+  [ngClass]="nomePosto !== 'x' ? 'prenotato' : 'libero'"
+></button>
