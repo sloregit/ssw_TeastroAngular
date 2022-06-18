@@ -44,6 +44,7 @@ export class AppComponent {
       next: (res: string) => {
         this.prenotazioni = JSON.parse(res);
         this.teatro = new Teatro(this.prenotazioni, rapido);
+        console.log(this.teatro);
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),
@@ -55,18 +56,30 @@ export class AppComponent {
       next: (val) => console.log(val),
     });
   }
+  //Per praticità//////////////////da Eliminare
   resetPrenotazioni() {
-    const prenotazioni: Array<any> = new Array(
-      new Array<string>(10),
-      new Array<string>(4)
-    );
-    console.log();
-    //let TeatroVuoto = new Teatro();
+    const prenotazioni: object = {
+      platea: Array(6)
+        .fill('fila')
+        .map(() =>
+          Array(10)
+            .fill('posto')
+            .map((val, posto) => {
+              return (val = 'x');
+            })
+        ),
+      palco: Array(4)
+        .fill('fila')
+        .map(() =>
+          Array(4)
+            .fill('posto')
+            .map((val, posto) => {
+              return (val = 'x');
+            })
+        ),
+    };
+    this.AppDBservice.SetPrenotazioni$(JSON.stringify(prenotazioni)).subscribe({
+      next: (val) => console.log(val),
+    });
   }
 }
-/**
- return this.http.post<string>(
-      this.URL + 'set?key=' + this.Key,
-      this.prenotazioni
-    );
- */
