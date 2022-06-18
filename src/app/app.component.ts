@@ -32,8 +32,6 @@ export class AppComponent {
 
   passaNome($event) {
     this.nomePrenotazione = $event.target.value;
-    console.log(this.nomePrenotazione);
-    //this.passaNomeEmitter.emit($event.target.value.toString());
   }
   //@Output in TeatroComponent
   clean(teatro: undefined) {
