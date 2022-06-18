@@ -1,4 +1,6 @@
 .selezionato {
+  background-color: green;
 }
 .nonSelezionato {
+  background-color: turquoise;
 }

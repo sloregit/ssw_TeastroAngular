@@ -18,7 +18,7 @@ export class PulsanteComponent implements OnInit {
   @Output() mostraNomeEmitter = new EventEmitter<object>();
   evidenzia: boolean = false;
   selezionati = [];
-  a;
+
   //invia al parent i dati del pulsante cliccato(this)
   //possono esser selezionati più posti
 
@@ -35,6 +35,8 @@ export class PulsanteComponent implements OnInit {
     }
   }
   //modifica lo stile dell'ultimo pulsante cliccato e dei posti prenotati
+  //  [ngStyle]="stile()"
+
   stile() {
     if (this.evidenzia == true) {
       return { 'background-color': 'green' };
