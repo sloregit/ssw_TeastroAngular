@@ -56,25 +56,10 @@ export class TeatroComponent implements OnInit {
     this.teatro = undefined;
     this.eliminaTeatroEmitter.emit(this.teatro);
   }
-
   //pulsante Conferma
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
     if (!this.rapido) {
-    }
-    if (this.nomePosto === 'x') {
-      //a seconda della zona
-      if (this.nuovaPrenotazione.zona === 'platea') {
-        this.teatro.platea[this.nuovaPrenotazione.fila][
-          this.nuovaPrenotazione.posto
-        ] = this.nomePrenotazione;
-      } else if (this.nuovaPrenotazione.zona === 'palco') {
-        this.teatro.palco[this.nuovaPrenotazione.fila][
-          this.nuovaPrenotazione.posto
-        ] = this.nomePrenotazione;
-      }
-    } else {
-      console.log('posto prenotato');
     }
   }
 
@@ -82,8 +67,8 @@ export class TeatroComponent implements OnInit {
   mostraPrenotazione($event, zona: string, fila: number, posto: number) {
     this.nomePosto = $event.nomePosto;
     this.evidenzia = $event.evidenzia;
-    if (!this.rapido && $event.nomePosto != 'x') {
-      if ($event.evidenzia === true) {
+    if (!this.rapido && this.nomePosto != 'x') {
+      if (this.evidenzia === true) {
         this.nuovaPrenotazione = new Prenotazione(
           this.nomePosto,
           zona,
@@ -101,6 +86,13 @@ export class TeatroComponent implements OnInit {
         fila,
         posto
       );
+      if (this.nomePosto === 'x') {
+        this.teatro[this.nuovaPrenotazione.zona][this.nuovaPrenotazione.fila][
+          this.nuovaPrenotazione.posto
+        ] = this.nomePrenotazione;
+      } else {
+        console.log('posto prenotato');
+      }
     }
   }
   //invocata dopo la generazione del component

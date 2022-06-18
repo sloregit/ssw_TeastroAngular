@@ -9,7 +9,9 @@
   <br />
   <span>
     <button (click)="mostraTeatro(false)">Prenota</button><br />
-    <button (click)="mostraTeatro(true)">Prenotazione rapida</button>
+    <button *ngIf="nomePrenotazione" (click)="mostraTeatro(true)">
+      Prenotazione rapida
+    </button>
   </span>
 </div>
 <div *ngIf="teatro !== undefined">

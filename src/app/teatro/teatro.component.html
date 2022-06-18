@@ -31,6 +31,6 @@
   <br />
   <div>
     <button (click)="eliminaTeatro()">indietro</button>
-    <button (click)="prenota()">conferma</button>
+    <button *ngIf="!rapido" (click)="prenota()">conferma</button>
   </div>
 </div>
