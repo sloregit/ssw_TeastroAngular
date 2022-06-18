@@ -106,6 +106,5 @@ export class TeatroComponent implements OnInit {
     this.platea = this.teatro.platea;
     this.palco = this.teatro.palco;
     this.rapido = this.teatro.rapido;
-    console.log(this.rapido);
   }
 }

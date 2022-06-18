@@ -11,7 +11,6 @@ export class Teatro {
   palco;
   rapido;
   constructor(prenotazioni: string, rapido: boolean) {
-    console.log(typeof prenotazioni);
     this.prenotazioni = prenotazioni;
     this.platea = this.prenotazioni.platea;
     this.palco = this.prenotazioni.palco;
