@@ -28,6 +28,7 @@ export class AppComponent {
   teatro: Teatro;
   nomePrenotazione: string;
   prenotazioni: string;
+  prenotazioniOut: string;
   constructor(private AppDBservice: AppDBService) {}
 
   passaNome($event) {
@@ -49,6 +50,15 @@ export class AppComponent {
     });
   }
   aggiornaPrenotazioni($event: Teatro) {
-    console.log($event);
+    this.prenotazioniOut = JSON.stringify($event.prenotazioni);
+    this.AppDBservice.SetPrenotazioni$($event.prenotazioni).subscribe({
+      next: (val) => console.log(val),
+    });
   }
 }
+/**
+ return this.http.post<string>(
+      this.URL + 'set?key=' + this.Key,
+      this.prenotazioni
+    );
+ */
