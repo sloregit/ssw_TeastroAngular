@@ -1,11 +1,4 @@
-import {
-  Component,
-  Injectable,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pulsante',
@@ -29,7 +22,6 @@ export class PulsanteComponent implements OnInit {
       } else {
         this.evidenzia = true;
       }
-      console.log(this);
       this.mostraNomeEmitter.emit(this);
     } catch (e: any) {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);

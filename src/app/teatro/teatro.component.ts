@@ -13,16 +13,36 @@ export class Prenotazione {
     this.posto = posto;
   }
 }
-
+/*
+PrenotazioneMultipla {selezionati: Array[2]}
+selezionati: Array[2]
+0: Prenotazione
+fila: 3
+nome: "x"
+posto: 3
+zona: "platea"
+__proto__: Prenotazione
+1: Prenotazione
+__proto__: PrenotazioneMultipla
+ */
 export class PrenotazioneMultipla {
   selezionati: Array<Prenotazione>;
-  constructor() {}
+  constructor() {
+    this.selezionati = [];
+  }
   aggiungi(prenotazione: Prenotazione) {
     this.selezionati.push(prenotazione);
+    console.log('aggiunto: ' + prenotazione);
+    console.log(this.selezionati);
   }
   rimuovi(prenotazione: Prenotazione) {
-    for (let elem in this.selezionati) {
-    }
+    this.selezionati.map((old, i) => {
+      if (old.fila === prenotazione.fila && old.posto === prenotazione.posto) {
+        this.selezionati.splice(i, 1);
+        console.log('rimosso: ' + this.selezionati[i]);
+      }
+    });
+    console.log(this.selezionati);
   }
 }
 @Component({
@@ -36,7 +56,7 @@ export class TeatroComponent implements OnInit {
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
   nomePosto: string;
-  prenotaMultipla: Array<Prenotazione> = [];
+  prenotaMultipla: PrenotazioneMultipla = new PrenotazioneMultipla();
   @Input() nomePrenotazione: string;
   nuovaPrenotazione: Prenotazione;
   evidenzia: boolean;
@@ -70,16 +90,21 @@ export class TeatroComponent implements OnInit {
   //@Output in pulsante: click del pulsante x vedere il nome + genera la prenotazione
   mostraPrenotazione($event, zona: string, fila: number, posto: number) {
     this.nomePosto = $event.nomePosto;
+    this.evidenzia = $event.evidenzia;
     if ($event.nomePosto != 'x') {
       alert('Il posto è già prenotato');
     }
-    this.nuovaPrenotazione = new Prenotazione(
-      $event.nomePosto,
-      zona,
-      fila,
-      posto
-    );
-    console.log($event);
+    if ($event.evidenzia === true) {
+      this.nuovaPrenotazione = new Prenotazione(
+        $event.nomePosto,
+        zona,
+        fila,
+        posto
+      );
+      this.prenotaMultipla.aggiungi(this.nuovaPrenotazione);
+    } else {
+      this.prenotaMultipla.rimuovi(this.nuovaPrenotazione);
+    }
   }
   //invocata dopo la generazione del component
   //this.prenotazioni sarà pronto quando OnInit è invocata
