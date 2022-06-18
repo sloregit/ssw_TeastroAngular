@@ -1,6 +1,6 @@
 .selezionato {
-  color: green;
+  background-color: green;
 }
 .nonSelezionato {
-  color: turquoise;
+  background-color: turquoise;
 }

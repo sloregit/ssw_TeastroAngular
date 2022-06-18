@@ -18,11 +18,10 @@ export class PrenotazioneMultipla {
   selezionati: Array<Prenotazione>;
   constructor() {}
   aggiungi(prenotazione: Prenotazione) {
-    this.selezionati.push(prenotazione) ;
+    this.selezionati.push(prenotazione);
   }
   rimuovi(prenotazione: Prenotazione) {
-    for(let elem in this.selezionati){
-      
+    for (let elem in this.selezionati) {
     }
   }
 }
@@ -69,9 +68,15 @@ export class TeatroComponent implements OnInit {
   }
 
   //@Output in pulsante: click del pulsante x vedere il nome + genera la prenotazione
-  mostraPrenotazione($event, zona: string, fila: number, posto: number, evidenzia) {
+  mostraPrenotazione(
+    $event,
+    zona: string,
+    fila: number,
+    posto: number,
+    evidenzia
+  ) {
     this.nomePosto = $event.nomePosto;
-    this.evidenzia = evidenzia;
+    this.evidenzia = $event.evidenzia;
     if ($event.nomePosto != 'x') {
       alert('Il posto è già prenotato');
     }
@@ -81,6 +86,7 @@ export class TeatroComponent implements OnInit {
       fila,
       posto
     );
+    console.log($event);
   }
   //invocata dopo la generazione del component
   //this.prenotazioni sarà pronto quando OnInit è invocata
