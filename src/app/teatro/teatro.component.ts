@@ -67,7 +67,6 @@ export class TeatroComponent implements OnInit {
             prenotazione.posto
           ] = this.nomePrenotazione)
       );
-      this.prenotaMultipla = undefined;
     }
   }
 
