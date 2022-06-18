@@ -15,13 +15,6 @@ export class PulsanteComponent implements OnInit {
   selezionati = [];
 
   //invia al parent i dati del pulsante cliccato(this)
-  prenotaVeloce() {
-    try {
-      this.prenotaVeloceEmitter.emit(this);
-    } catch (e) {
-      console.error('errore in Pulsante.prenotaveloce');
-    }
-  }
   //possono esser selezionati più posti
   mostraNome() {
     try {

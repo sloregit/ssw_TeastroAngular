@@ -12,7 +12,6 @@
       <app-pulsante
         [rapido]="rapido"
         (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
-        (prenotaVeloceEmitter)="prenota($event)"
         [nomePosto]="persona"
         [etichetta]="'P' + posto"
       ></app-pulsante>
@@ -24,7 +23,6 @@
       <app-pulsante
         [rapido]="rapido"
         (mostraNomeEmitter)="mostraPrenotazione($event, 'palco', fila, posto)"
-        (prenotaVeloceEmitter)="prenota($event)"
         [nomePosto]="persona"
         [etichetta]="'P' + posto"
       ></app-pulsante>

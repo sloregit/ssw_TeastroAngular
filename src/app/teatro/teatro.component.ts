@@ -14,11 +14,12 @@ export class Prenotazione {
   }
 }
 //Per la prenotazioni multiple
-//aggiunge le prenotazioni se il pulsante è selezionato, la elimina altrimenti
+//aggiunge le prenotazioni se il pulsante è selezionato,la elimina altrimenti
+
 export class PrenotazioneMultipla {
   selezionati: Array<Prenotazione>;
   constructor() {
-    this.selezionati = new Array();
+    this.selezionati = [];
   }
   aggiungi(prenotazione: Prenotazione) {
     this.selezionati.push(prenotazione);
@@ -58,22 +59,22 @@ export class TeatroComponent implements OnInit {
 
   //pulsante Conferma
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
-  prenota(prenotazioneSingola?) {
-    if (this.rapido) {
-      if (this.nomePosto === 'x') {
-        //a seconda della zona
-        if (this.nuovaPrenotazione.zona === 'platea') {
-          this.teatro.platea[this.nuovaPrenotazione.fila][
-            this.nuovaPrenotazione.posto
-          ] = this.nomePrenotazione;
-        } else if (this.nuovaPrenotazione.zona === 'palco') {
-          this.teatro.palco[this.nuovaPrenotazione.fila][
-            this.nuovaPrenotazione.posto
-          ] = this.nomePrenotazione;
-        }
-      } else {
-        console.log('posto prenotato');
+  prenota() {
+    if (!this.rapido) {
+    }
+    if (this.nomePosto === 'x') {
+      //a seconda della zona
+      if (this.nuovaPrenotazione.zona === 'platea') {
+        this.teatro.platea[this.nuovaPrenotazione.fila][
+          this.nuovaPrenotazione.posto
+        ] = this.nomePrenotazione;
+      } else if (this.nuovaPrenotazione.zona === 'palco') {
+        this.teatro.palco[this.nuovaPrenotazione.fila][
+          this.nuovaPrenotazione.posto
+        ] = this.nomePrenotazione;
       }
+    } else {
+      console.log('posto prenotato');
     }
   }
 
@@ -81,19 +82,25 @@ export class TeatroComponent implements OnInit {
   mostraPrenotazione($event, zona: string, fila: number, posto: number) {
     this.nomePosto = $event.nomePosto;
     this.evidenzia = $event.evidenzia;
-    if ($event.nomePosto != 'x') {
-      alert('Il posto è già prenotato');
-    }
-    if ($event.evidenzia === true) {
+    if (!this.rapido && $event.nomePosto != 'x') {
+      if ($event.evidenzia === true) {
+        this.nuovaPrenotazione = new Prenotazione(
+          this.nomePosto,
+          zona,
+          fila,
+          posto
+        );
+        this.prenotaMultipla.aggiungi(this.nuovaPrenotazione);
+      } else {
+        this.prenotaMultipla.rimuovi(fila, posto);
+      }
+    } else {
       this.nuovaPrenotazione = new Prenotazione(
-        $event.nomePosto,
+        this.nomePosto,
         zona,
         fila,
         posto
       );
-      this.prenotaMultipla.aggiungi(this.nuovaPrenotazione);
-    } else {
-      this.prenotaMultipla.rimuovi(fila, posto);
     }
   }
   //invocata dopo la generazione del component

@@ -8,10 +8,3 @@
 >
   {{ nomePosto }}
 </button>
-<button
-  *ngIf="rapido"
-  (click)="prenotaVeloce()"
-  [ngClass]="nomePosto !== 'x' ? 'prenotato' : 'libero'"
->
-  {{ nomePosto }}
-</button>
