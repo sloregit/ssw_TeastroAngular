@@ -63,7 +63,6 @@ export class TeatroComponent implements OnInit {
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
     if (!this.rapido && !this.prenotato) {
-      console.log(this.prenotaMultipla);
       this.prenotaMultipla.selezionati.map(
         (prenotazione) =>
           (this.teatro[prenotazione.zona][prenotazione.fila][
@@ -89,7 +88,6 @@ export class TeatroComponent implements OnInit {
           fila,
           posto
         );
-        console.log(this.nuovaPrenotazione);
         this.teatro[this.nuovaPrenotazione.zona][this.nuovaPrenotazione.fila][
           this.nuovaPrenotazione.posto
         ] = this.nomePrenotazione;
