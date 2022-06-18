@@ -35,7 +35,10 @@ export class TeatroComponent implements OnInit {
     this.teatro = undefined;
     this.eliminaTeatroEmitter.emit(this.teatro);
   }
-
+  b() {
+    console.log('b');
+    console.log(this);
+  }
   //pulsante Conferma
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
