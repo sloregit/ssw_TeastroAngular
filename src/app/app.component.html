@@ -7,11 +7,9 @@
     placeholder="il tuo nome?"
   />
   <br />
-  <span>
+  <span *ngIf="nomePrenotazione">   
     <button (click)="mostraTeatro(false)">Prenota</button><br />
-    <button *ngIf="nomePrenotazione" (click)="mostraTeatro(true)">
-      Prenotazione rapida
-    </button>
+    <button (click)="mostraTeatro(true)">Prenotazione rapida</button>
   </span>
 </div>
 <div *ngIf="teatro !== undefined">
