@@ -56,7 +56,7 @@ export class TeatroComponent implements OnInit {
     this.teatro = undefined;
     this.eliminaTeatroEmitter.emit(this.teatro);
   }
-  //pulsante Conferma
+  //pulsante Conferma prenotazioni ordinarie
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
     if (!this.rapido) {
@@ -67,31 +67,30 @@ export class TeatroComponent implements OnInit {
   mostraPrenotazione($event, zona: string, fila: number, posto: number) {
     this.nomePosto = $event.nomePosto;
     this.evidenzia = $event.evidenzia;
-    if (!this.rapido && this.nomePosto != 'x') {
-      if (this.evidenzia === true) {
-        this.nuovaPrenotazione = new Prenotazione(
-          this.nomePosto,
-          zona,
-          fila,
-          posto
-        );
-        this.prenotaMultipla.aggiungi(this.nuovaPrenotazione);
-      } else {
-        this.prenotaMultipla.rimuovi(fila, posto);
-      }
-    } else {
-      this.nuovaPrenotazione = new Prenotazione(
-        this.nomePosto,
-        zona,
-        fila,
-        posto
-      );
-      if (this.nomePosto === 'x') {
+    //se il posto è libero
+    if (this.nomePosto === 'x') {
+      //modalità rapida => clicco e prenoto
+      if (this.rapido) {
         this.teatro[this.nuovaPrenotazione.zona][this.nuovaPrenotazione.fila][
           this.nuovaPrenotazione.posto
         ] = this.nomePrenotazione;
-      } else {
-        console.log('posto prenotato');
+      }
+      //modalità ordinaria => clicco e lo aggiungo alle prenotazioni
+      if (!this.rapido) {
+        //se è selezionato
+        if (this.evidenzia === true) {
+          this.nuovaPrenotazione = new Prenotazione(
+            this.nomePosto,
+            zona,
+            fila,
+            posto
+          );
+          this.prenotaMultipla.aggiungi(this.nuovaPrenotazione);
+        }
+        //lo rimuovo se è deselezionato
+        else {
+          this.prenotaMultipla.rimuovi(fila, posto);
+        }
       }
     }
   }
