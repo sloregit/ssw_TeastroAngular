@@ -29,6 +29,7 @@ export class PulsanteComponent implements OnInit {
       } else {
         this.evidenzia = true;
       }
+      console.log(this);
       this.mostraNomeEmitter.emit(this);
     } catch (e: any) {
       console.error('errore in: Pulsante.mostraNome', e.message, e.name);
@@ -37,14 +38,6 @@ export class PulsanteComponent implements OnInit {
   //modifica lo stile dell'ultimo pulsante cliccato e dei posti prenotati
   //  [ngStyle]="stile()"
 
-  stile() {
-    if (this.evidenzia == true) {
-      return { 'background-color': 'green' };
-    } else if (this.evidenzia == false) {
-      return { 'background-color': 'turquoise' };
-    }
-    return { 'background-color': this.nomePosto != 'x' ? 'red' : 'turquoise' };
-  }
   constructor() {}
   ngOnInit() {}
 }

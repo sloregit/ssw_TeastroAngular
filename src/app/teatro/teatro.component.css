@@ -1,3 +1,6 @@
 .selezionato {
-  border-color: cornflowerblue;
+  color: green;
+}
+.nonSelezionato {
+  color: turquoise;
 }
