@@ -41,14 +41,14 @@ export class PrenotazioneMultipla {
 export class TeatroComponent implements OnInit {
   title: string = 'Seleziona il posto e premi conferma';
   @Input() teatro: Teatro;
+  @Input() nomePrenotazione: string;
+  rapido: boolean;
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
-  rapido: boolean;
   nomePosto: string;
   evidenzia: boolean;
-  prenotaMultipla: PrenotazioneMultipla = new PrenotazioneMultipla();
-  @Input() nomePrenotazione: string;
   nuovaPrenotazione: Prenotazione;
+  prenotaMultipla: PrenotazioneMultipla = new PrenotazioneMultipla();
   constructor() {}
   //torna alla pagina iniziale visualizzataSE(ngIf prenotazioni != undefined)
   @Output() eliminaTeatroEmitter = new EventEmitter();
@@ -60,6 +60,7 @@ export class TeatroComponent implements OnInit {
   //inserisce il contenuto dell'input nelle prenotazioni, poi invia al DB
   prenota() {
     if (!this.rapido) {
+      
     }
   }
 
