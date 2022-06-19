@@ -1,7 +1,7 @@
 <div *ngIf="teatro === undefined">
   <h3>{{ title }}</h3>
-  <select>
-    <option #spettacolo *ngFor="let spettacolo of sale" [ngValue]="spettacolo">
+  <select #spettacolo (onChange)="a($event)">
+    <option *ngFor="let spettacolo of sale">
       {{ spettacolo }}
     </option>
   </select>
@@ -14,10 +14,9 @@
   />
   <br />
   <span *ngIf="nomePrenotazione">
-    <button (click)="mostraTeatro(#spettacolo.spettacolo.value,false)">
-      Prenota</button
+    <button (click)="mostraTeatro(spettacolo.value, false)">Prenota</button
     ><br />
-    <button (click)="mostraTeatro(#spettacolo.spettacolo.value,false)">
+    <button (click)="mostraTeatro(spettacolo.value, false)">
       Prenotazione rapida
     </button>
   </span>

@@ -1,4 +1,11 @@
-import { Component, VERSION, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  VERSION,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+} from '@angular/core';
 import { AppDBService } from './app-db.service';
 
 export interface Prenotazioni {
@@ -36,7 +43,9 @@ export class AppComponent {
   constructor(private AppDBservice: AppDBService) {
     this.sale = ['spettacolo 1', 'spettacolo 2', 'spettacolo 3'];
   }
-
+  a($event) {
+    console.log($event);
+  }
   passaNome($event) {
     this.nomePrenotazione = $event.target.value;
   }
@@ -45,12 +54,25 @@ export class AppComponent {
     this.teatro = teatro;
   }
   //get dati + invio oggetto Teatro a teatroComponent
-  mostraTeatro(spettacolo, rapido: boolean) {
+  mostraTeatro(spettacolo: string, rapido: boolean) {
+    let index: number;
+    switch (spettacolo) {
+      case 'spettacolo 1':
+        index = 1;
+        break;
+      case 'spettacolo 2':
+        index = 2;
+        break;
+      case 'spettacolo 3':
+        index = 3;
+        break;
+    }
+    console.log(index);
     this.AppDBservice.getPrenotazioni$().subscribe({
       next: (res: string) => {
-        this.prenotazioni = JSON.parse(res);
-        this.teatro = new Teatro(this.prenotazioni, rapido, 'spettacolo1');
-        console.log(this.teatro);
+        this.prenotazioni = JSON.parse(res)[index];
+        this.teatro = new Teatro(this.prenotazioni, rapido, spettacolo);
+        console.log(this.prenotazioni);
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),
