@@ -35,16 +35,18 @@ export class Teatro {
 export class AppComponent {
   title: string = 'Consulta la disponibilità';
   sale: Array<string>;
-  spettacoloIndex: number;
+  spettacoloIndex: number = undefined;
   teatro: Teatro;
   nomePrenotazione: string;
   prenotazioni: string;
+  prenotazioniIn;
   prenotazioniOut: string;
   conferma: string;
   constructor(private AppDBservice: AppDBService) {
     this.sale = ['spettacolo 1', 'spettacolo 2', 'spettacolo 3'];
   }
-  a(nomeSpettacolo) {
+  numeraSpettacolo(nomeSpettacolo) {
+    console.log(nomeSpettacolo);
     switch (nomeSpettacolo) {
       case 'spettacolo 1':
         this.spettacoloIndex = 0;
@@ -68,50 +70,26 @@ export class AppComponent {
   }
   //get dati + invio oggetto Teatro a teatroComponent
   mostraTeatro(spettacolo: string, rapido: boolean) {
-    console.log(this.spettacoloIndex);
     this.AppDBservice.getPrenotazioni$().subscribe({
       next: (res: string) => {
-        this.prenotazioni = JSON.parse(res)[this.spettacoloIndex];
+        this.prenotazioniIn = JSON.parse(res);
+        this.prenotazioni = this.prenotazioniIn[this.spettacoloIndex].teatro;
+        console.log(this.prenotazioniIn);
         this.teatro = new Teatro(this.prenotazioni, rapido, spettacolo);
-        console.log(this.prenotazioni);
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),
     });
   }
   aggiornaPrenotazioni($event: Teatro) {
-    this.prenotazioniOut = JSON.stringify($event.prenotazioni);
-    this.AppDBservice.SetPrenotazioni$($event.prenotazioni).subscribe({
+    this.prenotazioniIn[this.spettacoloIndex].teatro = $event.prenotazioni;
+    this.prenotazioniOut = JSON.stringify(this.prenotazioniIn);
+    this.AppDBservice.SetPrenotazioni$(this.prenotazioniOut).subscribe({
       next: (val) => (this.conferma = val),
     });
     this.nomePrenotazione = undefined;
   }
   //Per praticità//////////////////da Eliminare
-  resetPrenotazioni() {
-    const prenotazioni: object = {
-      platea: Array(6)
-        .fill('fila')
-        .map(() =>
-          Array(10)
-            .fill('posto')
-            .map((val, posto) => {
-              return (val = 'x');
-            })
-        ),
-      palco: Array(4)
-        .fill('fila')
-        .map(() =>
-          Array(4)
-            .fill('posto')
-            .map((val, posto) => {
-              return (val = 'x');
-            })
-        ),
-    };
-    this.AppDBservice.SetPrenotazioni$(JSON.stringify(prenotazioni)).subscribe(
-      (val) => (this.conferma = 'Teatro resettato')
-    );
-  }
   NewresetPrenotazioni() {
     const prenotazioni: object = {
       platea: Array(6)

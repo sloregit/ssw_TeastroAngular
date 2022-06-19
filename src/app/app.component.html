@@ -1,12 +1,16 @@
 <div *ngIf="teatro === undefined">
   <h3>{{ title }}</h3>
-  <select #spettacolo (change)="a(spettacolo.value)">
-    <option *ngFor="let spettacolo of sale">
+  <select #spettacolo (change)="numeraSpettacolo(spettacolo.value)">
+    <option *ngIf="spettacoloIndex === undefined">
+      seleziona lo spettacolo
+    </option>
+    <option *ngFor="let spettacolo of sale" [ngValue]="spettacolo">
       {{ spettacolo }}
     </option>
   </select>
   <br />
   <input
+    *ngIf="spettacoloIndex !== undefined"
     #inserisci
     type="text"
     (keyup)="passaNome($event)"
