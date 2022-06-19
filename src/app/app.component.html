@@ -1,8 +1,8 @@
 <div *ngIf="teatro === undefined">
   <h3>{{ title }}</h3>
   <select>
-    <option *ngFor="let spettacolo of sale">
-      {{ spettacolo.nomeSpettacolo }}
+    <option #spettacolo *ngFor="let spettacolo of sale" [ngValue]="spettacolo">
+      {{ spettacolo }}
     </option>
   </select>
   <br />
@@ -14,8 +14,12 @@
   />
   <br />
   <span *ngIf="nomePrenotazione">
-    <button (click)="mostraTeatro(false)">Prenota</button><br />
-    <button (click)="mostraTeatro(true)">Prenotazione rapida</button>
+    <button (click)="mostraTeatro(#spettacolo.spettacolo.value,false)">
+      Prenota</button
+    ><br />
+    <button (click)="mostraTeatro(#spettacolo.spettacolo.value,false)">
+      Prenotazione rapida
+    </button>
   </span>
 </div>
 <div *ngIf="teatro !== undefined">
