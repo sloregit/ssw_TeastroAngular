@@ -1,6 +1,9 @@
 import { Component, VERSION, Input, Output, EventEmitter } from '@angular/core';
 import { AppDBService } from './app-db.service';
 
+export interface sale {
+  spettacoli: Array<Teatro>;
+}
 export interface Prenotazioni {
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
@@ -25,12 +28,39 @@ export class Teatro {
 })
 export class AppComponent {
   title: string = 'Consulta la disponibilità';
+  sale: sale;
   teatro: Teatro;
   nomePrenotazione: string;
   prenotazioni: string;
   prenotazioniOut: string;
   conferma: string;
-  constructor(private AppDBservice: AppDBService) {}
+  constructor(private AppDBservice: AppDBService) {
+    const prenotazioni: object = {
+      platea: Array(6)
+        .fill('fila')
+        .map(() =>
+          Array(10)
+            .fill('posto')
+            .map((val, posto) => {
+              return (val = 'x');
+            })
+        ),
+      palco: Array(4)
+        .fill('fila')
+        .map(() =>
+          Array(4)
+            .fill('posto')
+            .map((val, posto) => {
+              return (val = 'x');
+            })
+        ),
+    };
+    this.sale = [
+      { nomeSpettacolo: 'spettacolo 1', prenotazioni: prenotazioni },
+      { nomeSpettacolo: 'spettacolo 2', prenotazioni: prenotazioni },
+      { nomeSpettacolo: 'spettacolo 3', prenotazioni: prenotazioni },
+    ];
+  }
 
   passaNome($event) {
     this.nomePrenotazione = $event.target.value;
@@ -83,5 +113,11 @@ export class AppComponent {
     this.AppDBservice.SetPrenotazioni$(JSON.stringify(prenotazioni)).subscribe(
       (val) => (this.conferma = 'Teatro resettato')
     );
+  }
+  NewresetPrenotazioni() {
+    console.log(this.spettacoli);
+    /*this.AppDBservice.SetPrenotazioni$(JSON.stringify(prenotazioni)).subscribe(
+      (val) => (this.conferma = 'Teatro resettato')
+    );*/
   }
 }

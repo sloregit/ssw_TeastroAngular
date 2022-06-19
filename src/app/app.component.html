@@ -1,5 +1,11 @@
 <div *ngIf="teatro === undefined">
   <h3>{{ title }}</h3>
+  <select>
+    <option *ngFor="let spettacolo of spettacoli">
+      {{ spettacolo.nomeSpettacolo }}
+    </option>
+  </select>
+  <br />
   <input
     #inserisci
     type="text"
@@ -29,5 +35,5 @@
 <br />
 <br />
 <br />
-<button (click)="resetPrenotazioni()">reset teatro</button>
+<button (click)="NewresetPrenotazioni()">reset teatro</button>
 <p>{{ conferma }}</p>
