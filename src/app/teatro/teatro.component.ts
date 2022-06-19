@@ -53,7 +53,7 @@ export class TeatroComponent implements OnInit {
   prenotaMultipla: PrenotazioneMultipla = new PrenotazioneMultipla();
   prenotato: boolean;
   constructor() {}
-  //torna alla pagina iniziale visualizzataSE(ngIf prenotazioni != undefined)
+  //torna alla pagina iniziale, visualizzataSE(ngIf teatro != undefined)
   @Output() eliminaTeatroEmitter = new EventEmitter();
   eliminaTeatro() {
     this.teatro = undefined;
