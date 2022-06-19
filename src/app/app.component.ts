@@ -1,9 +1,7 @@
 import { Component, VERSION, Input, Output, EventEmitter } from '@angular/core';
 import { AppDBService } from './app-db.service';
 
-export interface sale {
-  spettacoli: Array<Teatro>;
-}
+export interface sale {}
 export interface Prenotazioni {
   platea: Array<Array<string>>;
   palco: Array<Array<string>>;
@@ -28,7 +26,7 @@ export class Teatro {
 })
 export class AppComponent {
   title: string = 'Consulta la disponibilità';
-  sale: sale;
+  sale;
   teatro: Teatro;
   nomePrenotazione: string;
   prenotazioni: string;
@@ -115,7 +113,6 @@ export class AppComponent {
     );
   }
   NewresetPrenotazioni() {
-    console.log(this.spettacoli);
     /*this.AppDBservice.SetPrenotazioni$(JSON.stringify(prenotazioni)).subscribe(
       (val) => (this.conferma = 'Teatro resettato')
     );*/
