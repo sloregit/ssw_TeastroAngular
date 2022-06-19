@@ -1,6 +1,6 @@
 <div *ngIf="teatro === undefined">
   <h3>{{ title }}</h3>
-  <select #spettacolo (onChange)="a($event)">
+  <select #spettacolo (change)="a(spettacolo.value)">
     <option *ngFor="let spettacolo of sale">
       {{ spettacolo }}
     </option>

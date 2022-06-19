@@ -35,6 +35,7 @@ export class Teatro {
 export class AppComponent {
   title: string = 'Consulta la disponibilità';
   sale: Array<string>;
+  spettacoloIndex: number;
   teatro: Teatro;
   nomePrenotazione: string;
   prenotazioni: string;
@@ -43,8 +44,18 @@ export class AppComponent {
   constructor(private AppDBservice: AppDBService) {
     this.sale = ['spettacolo 1', 'spettacolo 2', 'spettacolo 3'];
   }
-  a($event) {
-    console.log($event);
+  a(nomeSpettacolo) {
+    switch (nomeSpettacolo) {
+      case 'spettacolo 1':
+        this.spettacoloIndex = 0;
+        break;
+      case 'spettacolo 2':
+        this.spettacoloIndex = 1;
+        break;
+      case 'spettacolo 3':
+        this.spettacoloIndex = 2;
+        break;
+    }
   }
   passaNome($event) {
     this.nomePrenotazione = $event.target.value;
@@ -52,25 +63,15 @@ export class AppComponent {
   //@Output in TeatroComponent
   clean(teatro: undefined) {
     this.teatro = teatro;
+    this.spettacoloIndex = undefined;
+    this.nomePrenotazione = undefined;
   }
   //get dati + invio oggetto Teatro a teatroComponent
   mostraTeatro(spettacolo: string, rapido: boolean) {
-    let index: number;
-    switch (spettacolo) {
-      case 'spettacolo 1':
-        index = 1;
-        break;
-      case 'spettacolo 2':
-        index = 2;
-        break;
-      case 'spettacolo 3':
-        index = 3;
-        break;
-    }
-    console.log(index);
+    console.log(this.spettacoloIndex);
     this.AppDBservice.getPrenotazioni$().subscribe({
       next: (res: string) => {
-        this.prenotazioni = JSON.parse(res)[index];
+        this.prenotazioni = JSON.parse(res)[this.spettacoloIndex];
         this.teatro = new Teatro(this.prenotazioni, rapido, spettacolo);
         console.log(this.prenotazioni);
       },
