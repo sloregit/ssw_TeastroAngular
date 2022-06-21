@@ -34,8 +34,10 @@ export class Teatro {
 })
 export class AppComponent {
   title: string = 'Consulta la disponibilità';
+  consulta: boolean;
   sale: Array<string>;
   spettacoloIndex: number = undefined;
+  nomeSpettacolo: string;
   teatro: Teatro;
   nomePrenotazione: string;
   prenotazioni: string;
@@ -43,22 +45,24 @@ export class AppComponent {
   prenotazioniOut: string;
   conferma: string;
   constructor(private AppDBservice: AppDBService) {
-    this.sale = ['spettacolo 1', 'spettacolo 2', 'spettacolo 3'];
+    this.sale = ['The Big Lebowsky', 'spettacolo 2', 'spettacolo 3'];
   }
+
   numeraSpettacolo(nomeSpettacolo) {
     console.log(nomeSpettacolo);
     switch (nomeSpettacolo) {
-      case 'spettacolo 1':
+      case this.sale[0]:
         this.spettacoloIndex = 0;
         break;
-      case 'spettacolo 2':
+      case this.sale[1]:
         this.spettacoloIndex = 1;
         break;
-      case 'spettacolo 3':
+      case this.sale[2]:
         this.spettacoloIndex = 2;
         break;
     }
   }
+  //il nome della prenotazione viene dall'input
   passaNome($event) {
     this.nomePrenotazione = $event.target.value;
   }
@@ -74,7 +78,6 @@ export class AppComponent {
       next: (res: string) => {
         this.prenotazioniIn = JSON.parse(res);
         this.prenotazioni = this.prenotazioniIn[this.spettacoloIndex].teatro;
-        console.log(this.prenotazioniIn);
         this.teatro = new Teatro(this.prenotazioni, rapido, spettacolo);
       },
       error: (err) =>
@@ -83,7 +86,12 @@ export class AppComponent {
   }
   aggiornaPrenotazioni($event: Teatro) {
     this.prenotazioniIn[this.spettacoloIndex].teatro = $event.prenotazioni;
+    for (let spettacolo in this.prenotazioniIn) {
+      console.log(spettacolo);
+    }
     this.prenotazioniOut = JSON.stringify(this.prenotazioniIn);
+    console.log(this.prenotazioniOut);
+
     this.AppDBservice.SetPrenotazioni$(this.prenotazioniOut).subscribe({
       next: (val) => (this.conferma = val),
     });

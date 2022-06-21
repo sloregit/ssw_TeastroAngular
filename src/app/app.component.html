@@ -42,6 +42,9 @@
 <br />
 <br />
 <br />
-<p>---------------------------------------------------</p>
+<div *ngIf="teatro === undefined">
+  <app-aggiungispettacolo></app-aggiungispettacolo>
+</div>
+
 <button (click)="NewresetPrenotazioni()">reset all</button>
 <p>{{ conferma }}</p>

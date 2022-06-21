@@ -7,10 +7,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppDBService } from './app-db.service';
 import { TeatroComponent } from './teatro/teatro.component';
 import { PulsanteComponent } from './pulsante/pulsante.component';
+import { AggiungispettacoloComponent } from './aggiungispettacolo/aggiungispettacolo.component';
+import { SelectAggiungiComponent } from './aggiungispettacolo/select-aggiungi/select-aggiungi.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  declarations: [AppComponent, PulsanteComponent, TeatroComponent],
+  declarations: [
+    AppComponent,
+    PulsanteComponent,
+    TeatroComponent,
+    AggiungispettacoloComponent,
+    SelectAggiungiComponent,
+  ],
   bootstrap: [AppComponent],
   providers: [AppDBService],
 })
