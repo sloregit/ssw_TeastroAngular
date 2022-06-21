@@ -1,0 +1,11 @@
+<div *ngFor="let prenotazioni of teatro.platea; let fila = index">
+  <span *ngFor="let persona of prenotazioni; let posto = index">
+    <app-pulsante
+      [rapido]="rapido"
+      (mostraNomeEmitter)="mostraPrenotazione($event, 'platea', fila, posto)"
+      [nomePosto]="persona"
+      [etichetta]="'P' + posto"
+      [prenotato]="prenotato"
+    ></app-pulsante>
+  </span>
+</div>
