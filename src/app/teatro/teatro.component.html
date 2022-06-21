@@ -12,7 +12,11 @@
   {{ nomePosto }}
 </p>
 <div *ngIf="teatro !== undefined">
-  <app-sala-teatro [prenotazioni]="platea" [rapido]="rapido"></app-sala-teatro>
+  <app-sala-teatro
+    [nomePrenotazione]="nomePrenotazione"
+    [prenotazioni]="platea"
+    [rapido]="rapido"
+  ></app-sala-teatro>
   <br />
   <app-sala-teatro [prenotazioni]="palco" [rapido]="rapido"></app-sala-teatro>
   <br />
