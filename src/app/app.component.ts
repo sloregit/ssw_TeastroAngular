@@ -84,9 +84,12 @@ export class AppComponent {
   aggiornaPrenotazioni($event: Teatro) {
     this.prenotazioniIn[this.spettacoloIndex].teatro = $event.prenotazioni;
     this.prenotazioniOut = JSON.stringify(this.prenotazioniIn);
+    console.log('FINALE');
+    console.log(this.prenotazioniOut);
+    /*
     this.AppDBservice.SetPrenotazioni$(this.prenotazioniOut).subscribe({
       next: (val) => (this.conferma = val),
-    });
+    });*/
     this.nomePrenotazione = undefined;
   }
   //Per praticità//////////////////da Eliminare

@@ -1,4 +1,4 @@
-<div *ngFor="let prenotazioni of teatro.platea; let fila = index">
+<div *ngFor="let prenotazioni of prenotazioni; let fila = index">
   <span *ngFor="let persona of prenotazioni; let posto = index">
     <app-pulsante
       [rapido]="rapido"

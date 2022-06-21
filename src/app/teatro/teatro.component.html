@@ -12,7 +12,7 @@
   {{ nomePosto }}
 </p>
 <div *ngIf="teatro !== undefined">
- 
+  <app-sala-teatro [prenotazioni]="platea" [rapido]="rapido"></app-sala-teatro>
   <br />
   <div *ngFor="let prenotazioni of teatro.palco; let fila = index">
     <span *ngFor="let persona of prenotazioni; let posto = index">
