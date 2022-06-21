@@ -14,17 +14,7 @@
 <div *ngIf="teatro !== undefined">
   <app-sala-teatro [prenotazioni]="platea" [rapido]="rapido"></app-sala-teatro>
   <br />
-  <div *ngFor="let prenotazioni of teatro.palco; let fila = index">
-    <span *ngFor="let persona of prenotazioni; let posto = index">
-      <app-pulsante
-        [rapido]="rapido"
-        (mostraNomeEmitter)="mostraPrenotazione($event, 'palco', fila, posto)"
-        [nomePosto]="persona"
-        [etichetta]="'P' + posto"
-        [prenotato]="prenotato"
-      ></app-pulsante>
-    </span>
-  </div>
+  <app-sala-teatro [prenotazioni]="palco" [rapido]="rapido"></app-sala-teatro>
   <br />
   <div>
     <button (click)="eliminaTeatro()">indietro</button>

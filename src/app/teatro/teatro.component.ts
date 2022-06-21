@@ -73,7 +73,7 @@ export class TeatroComponent implements OnInit {
       this.inviaPrenotazioniEmitter.emit(this.teatro);
     }
   }
-
+  /*
   //@Output in pulsante: click del pulsante x vedere il nome + genera la prenotazione
   mostraPrenotazione($event, zona: string, fila: number, posto: number) {
     this.nomePosto = $event.nomePosto;
@@ -112,7 +112,7 @@ export class TeatroComponent implements OnInit {
         }
       }
     }
-  }
+  }*/
   //invocata dopo la generazione del component
   //this.prenotazioni sarà pronto quando OnInit è invocata
   ngOnInit() {
