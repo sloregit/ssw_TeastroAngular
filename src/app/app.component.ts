@@ -106,7 +106,7 @@ export class AppComponent {
           Array(10)
             .fill('posto')
             .map((val, posto) => {
-              return (val = undefined);
+              return (val = 'pippo');
             })
         ),
       palco: Array(4)
