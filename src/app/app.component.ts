@@ -106,7 +106,7 @@ export class AppComponent {
           Array(10)
             .fill('posto')
             .map((val, posto) => {
-              return (val = undefined);
+              return (val = 'pippo');
             })
         ),
       palco: Array(4)
@@ -119,12 +119,12 @@ export class AppComponent {
             })
         ),
     };
-    const sale = [
+    /*const sale = [
       { nomeSpettacolo: 'spettacolo 1', teatro: prenotazioni },
       { nomeSpettacolo: 'spettacolo 2', teatro: prenotazioni },
-    ];
-    console.log(sale);
-    this.AppDBservice.SetPrenotazioni$(JSON.stringify(sale)).subscribe(
+    ];*/
+    // console.log(sale);
+    this.AppDBservice.SetPrenotazioni$(JSON.stringify(prenotazioni)).subscribe(
       (val) => (this.conferma = 'Teatro resettato')
     );
   }
