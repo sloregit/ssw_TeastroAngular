@@ -100,7 +100,7 @@ export class AppComponent {
   //Per praticità//////////////////da Eliminare
   NewresetPrenotazioni() {
     const prenotazioni: object = {
-      platea: Array(6)
+      platea: Array(7)
         .fill('fila')
         .map(() =>
           Array(10)
@@ -112,7 +112,7 @@ export class AppComponent {
       palco: Array(4)
         .fill('fila')
         .map(() =>
-          Array(4)
+          Array(6)
             .fill('posto')
             .map((val, posto) => {
               return (val = undefined);
@@ -122,7 +122,6 @@ export class AppComponent {
     const sale = [
       { nomeSpettacolo: 'spettacolo 1', teatro: prenotazioni },
       { nomeSpettacolo: 'spettacolo 2', teatro: prenotazioni },
-      { nomeSpettacolo: 'spettacolo 3', teatro: prenotazioni },
     ];
     console.log(sale);
     this.AppDBservice.SetPrenotazioni$(JSON.stringify(sale)).subscribe(
